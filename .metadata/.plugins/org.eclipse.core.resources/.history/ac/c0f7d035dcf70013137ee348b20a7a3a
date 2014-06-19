@@ -1,0 +1,18 @@
+package br.com.senac.dao.dao_interfaces;
+
+import java.util.List;
+
+
+import br.com.senac.model.Produto;
+
+public interface ProdutoDAO {
+	
+	int cadastrar(Produto produto);
+	int remover(Produto produto);
+	int atualizar(Produto produto);
+	Produto buscarPorMatricula(String matricula);
+	
+	public List<Produto> getTodosClientes();
+	int creditarSaldo(double saldo);
+
+}

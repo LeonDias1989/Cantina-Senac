@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="br.com.senac.model.Cliente"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.view.CadastroCliente.ButtonCancelarController"/>
-<fullyQualifiedTypeName name="br.com.senac.dao.DataBase"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.dao_interfaces.FuncionarioDAO"/>
 <fullyQualifiedTypeName name="br.com.senac.model.Funcionario"/>
 <fullyQualifiedTypeName name="br.com.senac.view.CadastroFuncionario.ButtonCadastrarController"/>
@@ -21,4 +20,9 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="br.com.senac.view.CadastroFuncionario.ButtonCancelarController"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.DataBase"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.dao_interfaces.ProdutoDAO"/>
+<fullyQualifiedTypeName name="br.com.senac.model.Produto"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.ProdutoDAODB"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaCadastrarProduto"/>
 </qualifiedTypeNameHistroy>

@@ -2,8 +2,10 @@ package br.com.senac.testes;
 
 import br.com.senac.dao.ClienteDAODB;
 import br.com.senac.dao.FuncionarioDAODB;
+import br.com.senac.dao.ProdutoDAODB;
 import br.com.senac.model.Cliente;
 import br.com.senac.model.Funcionario;
+import br.com.senac.model.Produto;
 
 public class TesteDAODB {
 
@@ -16,11 +18,17 @@ public class TesteDAODB {
 //
 //		System.out.println(daoDB.cadastrar(cliente0));
 		
-		Funcionario funcionario = new Funcionario("Avelino", "A310", "1234ABCD");
+//		Funcionario funcionario = new Funcionario("Avelino", "A310", "1234ABCD");
+//		
+//		FuncionarioDAODB funcionarioDAODB = new FuncionarioDAODB();
+//		
+//		System.out.println(funcionarioDAODB.cadastrar(funcionario));
 		
-		FuncionarioDAODB funcionarioDAODB = new FuncionarioDAODB();
+		Produto produto = new Produto("1", "Suco de Laranja", "Bebida", 3.50);
 		
-		System.out.println(funcionarioDAODB.cadastrar(funcionario));
+		ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+		
+		System.out.println(produtoDAODB.cadastrar(produto));
 
 	}
 

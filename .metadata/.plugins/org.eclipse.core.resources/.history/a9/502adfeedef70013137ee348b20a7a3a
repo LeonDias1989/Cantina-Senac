@@ -1,0 +1,61 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
+
+@SuppressWarnings("serial")
+public class TelaCadastrarProduto extends JFrame {
+	private JTextField textFieldCodigoProduto;
+	private JLabel labelCodigoProduto;
+	private JLabel labelNomeProduto;
+	private JTextField textFieldNomeProduto;
+	private JLabel labelCategoriaProduto;
+
+	public TelaCadastrarProduto() {
+		
+		setTitle("Cadastrar Produtos");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		labelCodigoProduto = new JLabel("C\u00F3digo Produto");
+		labelCodigoProduto.setBounds(10, 45, 91, 14);
+		getContentPane().add(labelCodigoProduto);
+		
+		textFieldCodigoProduto = new JTextField();
+		textFieldCodigoProduto.setBounds(95, 42, 86, 20);
+		getContentPane().add(textFieldCodigoProduto);
+		textFieldCodigoProduto.setColumns(10);
+		
+		labelNomeProduto = new JLabel("Nome ");
+		labelNomeProduto.setBounds(10, 70, 46, 14);
+		getContentPane().add(labelNomeProduto);
+		
+		JLabel lblNewLabel = new JLabel("Cadastrar Produtos");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(10, 11, 153, 14);
+		getContentPane().add(lblNewLabel);
+		
+		textFieldNomeProduto = new JTextField();
+		textFieldNomeProduto.setBounds(95, 67, 86, 20);
+		getContentPane().add(textFieldNomeProduto);
+		textFieldNomeProduto.setColumns(10);
+		
+		labelCategoriaProduto = new JLabel("Categoria");
+		labelCategoriaProduto.setBounds(10, 95, 53, 14);
+		getContentPane().add(labelCategoriaProduto);
+		
+		
+		
+		setVisible(true);
+		
+	}
+
+	public static void main(String[] args) {
+		new TelaCadastrarProduto();
+		
+	}
+}
