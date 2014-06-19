@@ -1,5 +1,7 @@
 package br.com.senac.model;
 
+import javax.swing.JTextField;
+
 public class Funcionario {
 
 	private String nome;
@@ -10,6 +12,13 @@ public class Funcionario {
 		super();
 		this.nome = nome;
 		this.codigoFuncionario = codigoFuncionario;
+		this.senha = senha;
+	}
+
+	public Funcionario(JTextField textFieldNome,
+			JTextField textFieldCodigoFuncionario, String senha) {
+		this.nome = textFieldNome.getText();
+		this.codigoFuncionario = textFieldCodigoFuncionario.getText();
 		this.senha = senha;
 	}
 

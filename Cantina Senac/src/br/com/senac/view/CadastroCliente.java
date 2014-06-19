@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-
 import br.com.senac.dao.ClienteDAODB;
 import br.com.senac.model.Cliente;
 
@@ -49,6 +48,7 @@ public class CadastroCliente extends JFrame implements ActionListener {
 		labelAvisoSenha.setForeground(Color.RED);
 		labelAvisoSenha.setBounds(93, 224, 156, 14);
 		getContentPane().add(labelAvisoSenha);
+		setResizable(false);
 
 	}
 
@@ -122,6 +122,7 @@ public class CadastroCliente extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
+			// TODO MATRÍCULA COMEÇAR COM 63 E EMAIL CONTEM @
 			if (passwordField1.getText().equals(passwordField2.getText())
 					&& (!passwordField1.getText().equals(""))) {
 
@@ -132,7 +133,13 @@ public class CadastroCliente extends JFrame implements ActionListener {
 
 				ClienteDAODB clienteDAODB = new ClienteDAODB();
 
-				clienteDAODB.cadastrar(cliente);
+				int rows = clienteDAODB.cadastrar(cliente);
+
+				if (rows > 0) {
+					JOptionPane.showMessageDialog(null,
+							"Cadastro Realizado com Sucesso", "Cadastrado(a)",
+							2);
+				}
 
 				textFieldMatricula.setText("");
 				textFieldNome.setText("");
@@ -140,12 +147,9 @@ public class CadastroCliente extends JFrame implements ActionListener {
 				passwordField1.setText("");
 				passwordField2.setText("");
 
-				JOptionPane.showMessageDialog(null,
-						"Cadastro Realizado com Sucesso");
-
 			} else
-				JOptionPane.showMessageDialog(null, "Senhas Diferentes");
-
+				JOptionPane.showMessageDialog(null, "ERRO Senhas Diferentes",
+						"ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -157,7 +161,7 @@ public class CadastroCliente extends JFrame implements ActionListener {
 
 		}
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		new CadastroCliente();

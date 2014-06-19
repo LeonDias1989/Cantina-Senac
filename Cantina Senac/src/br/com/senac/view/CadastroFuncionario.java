@@ -7,30 +7,40 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
+import br.com.senac.dao.FuncionarioDAODB;
+import br.com.senac.model.Funcionario;
 
 @SuppressWarnings("serial")
 public class CadastroFuncionario extends JFrame implements ActionListener {
 
 	private JLabel labelCadastrarFuncionario;
-	private JTextField textField;
+	private JTextField textFieldCodigoFuncionario;
 	private JLabel labelNome;
-	private JTextField textField_1;
+	private JTextField textFieldNome;
 	private JLabel labelDigiteASenha;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JPasswordField passwordField1;
+	private JPasswordField passwordField2;
 	private JButton buttonCadastrar;
 	private JButton buttonCancelar;
 
 	public CadastroFuncionario() {
 		super("Cadastrar Funcionário");
 
+		iniciarComponentes();
+
 		setSize(395, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
+		setResizable(false);
 
+	}
+
+	private void iniciarComponentes() {
 		labelCadastrarFuncionario = new JLabel("Cadastrar Funcion\u00E1rio");
 		labelCadastrarFuncionario.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCadastrarFuncionario.setBounds(104, 35, 202, 14);
@@ -41,46 +51,93 @@ public class CadastroFuncionario extends JFrame implements ActionListener {
 		labelCodigoDoFuncionrio.setBounds(104, 105, 149, 14);
 		getContentPane().add(labelCodigoDoFuncionrio);
 
-		textField = new JTextField();
-		textField.setBounds(104, 121, 167, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldCodigoFuncionario = new JTextField();
+		textFieldCodigoFuncionario.setBounds(104, 121, 167, 20);
+		getContentPane().add(textFieldCodigoFuncionario);
+		textFieldCodigoFuncionario.setColumns(10);
 
 		labelNome = new JLabel("Nome");
 		labelNome.setBounds(104, 60, 46, 14);
 		getContentPane().add(labelNome);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(104, 74, 167, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(104, 74, 167, 20);
+		getContentPane().add(textFieldNome);
+		textFieldNome.setColumns(10);
 
 		labelDigiteASenha = new JLabel("Digite a senha");
 		labelDigiteASenha.setBounds(104, 177, 167, 14);
 		getContentPane().add(labelDigiteASenha);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(104, 190, 167, 20);
-		getContentPane().add(passwordField);
+		passwordField1 = new JPasswordField();
+		passwordField1.setBounds(104, 190, 167, 20);
+		getContentPane().add(passwordField1);
 
 		JLabel labelConfirmeSuaSenha = new JLabel("Confirme sua senha:");
 		labelConfirmeSuaSenha.setBounds(104, 221, 167, 14);
 		getContentPane().add(labelConfirmeSuaSenha);
 
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(104, 234, 167, 20);
-		getContentPane().add(passwordField_1);
+		passwordField2 = new JPasswordField();
+		passwordField2.setBounds(104, 234, 167, 20);
+		getContentPane().add(passwordField2);
 
 		buttonCadastrar = new JButton("OK");
 		buttonCadastrar.setToolTipText("Cadastrar funcion\u00E1rio?");
 		buttonCadastrar.setBounds(104, 265, 67, 23);
+		buttonCadastrar.addActionListener(new ButtonCadastrarController());
 		getContentPane().add(buttonCadastrar);
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setToolTipText("Cancelar o cadastro?");
 		buttonCancelar.setBounds(182, 265, 89, 23);
+		buttonCancelar.addActionListener(new ButtonCancelarController());
 		getContentPane().add(buttonCancelar);
 
+	}
+
+	class ButtonCadastrarController implements ActionListener {
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			if (passwordField1.getText().equals(passwordField2.getText())
+					&& (!passwordField1.getText().equals(""))) {
+
+				String senha = passwordField1.getText();
+
+				Funcionario funcionario = new Funcionario(textFieldNome,
+						textFieldCodigoFuncionario, senha);
+
+				FuncionarioDAODB funcionarioDAODB = new FuncionarioDAODB();
+
+				int rows = funcionarioDAODB.cadastrar(funcionario);
+
+				if (rows > 0) {
+					JOptionPane.showMessageDialog(null,
+							"Cadastrado com sucesso", "Cadastrado(a)", 2);
+
+				}
+
+				textFieldNome.setText("");
+				textFieldCodigoFuncionario.setText("");
+				passwordField1.setText("");
+				passwordField2.setText("");
+
+			} else
+				JOptionPane.showMessageDialog(null, "ERRO Senhas Diferentes",
+						"ERRO", JOptionPane.ERROR_MESSAGE);
+
+		}
+	}
+
+	class ButtonCancelarController implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			dispose();
+
+		}
 	}
 
 	@Override
