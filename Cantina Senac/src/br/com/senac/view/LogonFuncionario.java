@@ -56,12 +56,13 @@ public class LogonFuncionario extends JFrame implements ActionListener {
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(168, 165, 88, 23);
 		getContentPane().add(buttonCancelar);
-		setVisible(true);
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new LogonFuncionario();
+		setVisible(true);
 
 	}
 

@@ -1,0 +1,11 @@
+1403182492542	Move compilation unit
+1403182756193	Rename method 'inserir'
+1403182945522	Rename field 'BANCO'
+1403182951987	Rename field 'SENHA'
+1403184295092	Rename local variable 'n'
+1403185379118	Rename local variable 'sql'
+1403186594900	Rename local variable 'arg0'
+1403186613852	Rename type 'CadastroClienteController'
+1403187156604	Rename local variable 'senha2'
+1403188106245	Rename type 'CadastroClienteButtonOkController'
+1403188466006	Delete element

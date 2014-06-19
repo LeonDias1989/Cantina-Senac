@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+C:\Users\Leon_Dias\Documents\GitHub\Cantina-Senac\Cantina Senac\.metadata\.plugins\org.eclipse.jdt.core

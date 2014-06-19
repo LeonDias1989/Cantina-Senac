@@ -1,0 +1,45 @@
+package br.com.senac.dao;
+
+import java.util.List;
+
+import br.com.senac.model.Cliente;
+
+public class ClienteDAODB implements ClienteDAO {
+
+	@Override
+	public int cadastrar(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int remover(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int atualizar(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Cliente buscarPorMatricula(String matricula) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int creditarSaldo(double saldo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Cliente> getTodosClientes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

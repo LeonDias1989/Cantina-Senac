@@ -1,0 +1,11 @@
+package br.com.senac.dao;
+
+import br.com.senac.model.Cliente;
+
+public interface ClienteDAO {
+	
+	int cadastrar(Cliente cliente);
+	
+	int inserir(double saldo);
+
+}

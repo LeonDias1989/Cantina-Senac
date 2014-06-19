@@ -7,12 +7,20 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+
+import br.com.senac.dao.ClienteDAODB;
+import br.com.senac.model.Cliente;
+
+import java.awt.Color;
+
 @SuppressWarnings("serial")
 public class CadastroCliente extends JFrame implements ActionListener {
+
 	private JLabel labelCadastroCliente;
 	private JLabel labelNome;
 	private JTextField textFieldNome;
@@ -26,14 +34,25 @@ public class CadastroCliente extends JFrame implements ActionListener {
 	private JPasswordField passwordField2;
 	private JButton buttonOk;
 	private JButton buttonCancelar;
+	private JLabel labelAvisoSenha;
 
 	public CadastroCliente() {
 		super("Cadastro Cliente");
 
-		setSize(395, 450);
+		iniciarComponentes();
+
+		setSize(377, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 
+		labelAvisoSenha = new JLabel("(Max. 8 d\u00EDgitos)");
+		labelAvisoSenha.setForeground(Color.RED);
+		labelAvisoSenha.setBounds(93, 224, 156, 14);
+		getContentPane().add(labelAvisoSenha);
+
+	}
+
+	private void iniciarComponentes() {
 		labelCadastroCliente = new JLabel("Cadastro Cliente");
 		labelCadastroCliente.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCadastroCliente.setBounds(93, 29, 156, 14);
@@ -85,18 +104,64 @@ public class CadastroCliente extends JFrame implements ActionListener {
 		buttonOk = new JButton("OK");
 		buttonOk.setToolTipText("Confirmar cadastro?");
 		buttonOk.setBounds(93, 325, 55, 23);
+
+		buttonOk.addActionListener(new ButtonOkController());
 		getContentPane().add(buttonOk);
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setToolTipText("Cancelar Cadastro");
 		buttonCancelar.setBounds(160, 325, 89, 23);
+		buttonCancelar.addActionListener(new ButtonCancelarController());
 		getContentPane().add(buttonCancelar);
+
+	}
+
+	class ButtonOkController implements ActionListener {
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if (passwordField1.getText().equals(passwordField2.getText())
+					&& (!passwordField1.getText().equals(""))) {
+
+				String senha = passwordField1.getText();
+
+				Cliente cliente = new Cliente(textFieldMatricula,
+						textFieldNome, textFieldEmail, senha);
+
+				ClienteDAODB clienteDAODB = new ClienteDAODB();
+
+				clienteDAODB.cadastrar(cliente);
+
+				textFieldMatricula.setText("");
+				textFieldNome.setText("");
+				textFieldEmail.setText("");
+				passwordField1.setText("");
+				passwordField2.setText("");
+
+				JOptionPane.showMessageDialog(null,
+						"Cadastro Realizado com Sucesso");
+
+			} else
+				JOptionPane.showMessageDialog(null, "Senhas Diferentes");
+
+		}
+	}
+
+	class ButtonCancelarController implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			dispose();
+
+		}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		new CadastroCliente();
 		setVisible(true);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		new CadastroCliente();
-
-	}
 }

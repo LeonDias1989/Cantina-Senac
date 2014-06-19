@@ -12,8 +12,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 @SuppressWarnings("serial")
-public class CadastroFuncionario extends JFrame implements ActionListener{
-	
+public class CadastroFuncionario extends JFrame implements ActionListener {
+
 	private JLabel labelCadastrarFuncionario;
 	private JTextField textField;
 	private JLabel labelNome;
@@ -80,14 +80,13 @@ public class CadastroFuncionario extends JFrame implements ActionListener{
 		buttonCancelar.setToolTipText("Cancelar o cadastro?");
 		buttonCancelar.setBounds(182, 265, 89, 23);
 		getContentPane().add(buttonCancelar);
-		setVisible(true);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new CadastroFuncionario();
-		//TODO insert on data base
+		setVisible(true);
 	}
 
 }

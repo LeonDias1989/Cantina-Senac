@@ -57,12 +57,13 @@ public class LogonCliente extends JFrame implements ActionListener {
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(194, 145, 89, 23);
 		getContentPane().add(buttonCancelar);
-		setVisible(true);
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new LogonCliente();
+		setVisible(true);
 
 	}
 

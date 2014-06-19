@@ -126,6 +126,7 @@ public class TelaLogon extends JFrame {
 		getContentPane().add(panelSenha);
 	}
 
+	//TODO CRIAR CLASSE PRINCIPAL PARA EXECUTAR A APLICAÇÃO
 	public static void main(String[] args) {
 		new TelaLogon();
 	}

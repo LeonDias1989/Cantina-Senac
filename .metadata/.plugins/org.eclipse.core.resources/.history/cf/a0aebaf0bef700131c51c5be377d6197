@@ -1,0 +1,69 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class LogonCliente extends JFrame implements ActionListener {
+	private JLabel labelClienteLogon;
+	private JLabel labelMatricula;
+	private JTextField textField;
+	private JLabel labelSenha;
+	private JPasswordField passwordField;
+	private JButton buttonOk;
+	private JButton buttonCancelar;
+
+	public LogonCliente() {
+		setTitle("Logon Cliente");
+
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 431, 300);
+		getContentPane().setLayout(null);
+
+		labelClienteLogon = new JLabel("Cliente Logon");
+		labelClienteLogon.setFont(new Font("Tahoma", Font.BOLD, 15));
+		labelClienteLogon.setBounds(127, 11, 121, 27);
+		getContentPane().add(labelClienteLogon);
+
+		labelMatricula = new JLabel("Matr\u00EDcula");
+		labelMatricula.setBounds(127, 48, 89, 14);
+		getContentPane().add(labelMatricula);
+
+		textField = new JTextField();
+		textField.setBounds(127, 67, 156, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+
+		labelSenha = new JLabel("Senha");
+		labelSenha.setBounds(127, 98, 89, 14);
+		getContentPane().add(labelSenha);
+
+		passwordField = new JPasswordField();
+		passwordField.setBounds(127, 114, 156, 20);
+		getContentPane().add(passwordField);
+
+		buttonOk = new JButton("OK");
+		buttonOk.setBounds(127, 145, 62, 23);
+		getContentPane().add(buttonOk);
+
+		buttonCancelar = new JButton("Cancelar");
+		buttonCancelar.setBounds(194, 145, 89, 23);
+		getContentPane().add(buttonCancelar);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		new LogonCliente();
+
+	}
+
+}
