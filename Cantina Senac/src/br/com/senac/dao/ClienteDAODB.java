@@ -3,6 +3,7 @@ package br.com.senac.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.senac.dao.dao_interfaces.ClienteDAO;
 import br.com.senac.model.Cliente;
 
 public class ClienteDAODB extends DataBase implements ClienteDAO {
