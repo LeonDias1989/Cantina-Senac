@@ -113,7 +113,7 @@ public class TelaLogon extends JFrame {
 		buttonCriarNovoCliente
 				.setToolTipText("Cadastrar uma nova conta de cliente");
 		buttonCriarNovoCliente.setBounds(267, 243, 155, 23);
-		buttonCriarNovoCliente.addActionListener(new TelaCadastroCliente());
+		buttonCriarNovoCliente.addActionListener(new CadastroCliente());
 		panelSenha.add(buttonCriarNovoCliente);
 
 		labelNaoPossuiC = new JLabel("N\u00E3o possui cadastro?");

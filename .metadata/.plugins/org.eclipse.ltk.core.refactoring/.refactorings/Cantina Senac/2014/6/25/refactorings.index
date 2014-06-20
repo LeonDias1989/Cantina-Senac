@@ -12,3 +12,8 @@
 1403189973233	Move compilation units
 1403197169842	Rename local variable 'senha2'
 1403201029045	Rename type 'Produto'
+1403229782013	Rename field 'btnNewButton'
+1403229789118	Rename field 'btnCancelar'
+1403229921294	Rename type 'CadastroCliente'
+1403229985330	Rename local variable 'arg0'
+1403230223580	Rename local variable 'preco2'

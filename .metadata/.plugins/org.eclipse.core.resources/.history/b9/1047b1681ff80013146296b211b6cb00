@@ -2,7 +2,6 @@ package br.com.senac.view;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import java.awt.Font;
@@ -10,9 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
-import br.com.senac.dao.ProdutoDAODB;
-import br.com.senac.model.Produto;
 
 @SuppressWarnings("serial")
 public class TelaCadastrarProduto extends JFrame {
@@ -90,48 +86,17 @@ public class TelaCadastrarProduto extends JFrame {
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(111, 157, 124, 23);
-		buttonCancelar.addActionListener(new ButtonCancelController());
 		getContentPane().add(buttonCancelar);
 
 	}
-
-	class ButtonOkController implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			double preco = Double.parseDouble(textFieldPreco.getText());
-
-			Produto produto = new Produto(textFieldCodigoProduto,
-					textFieldNomeProduto, textFieldCategoria, preco);
-
-			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
-
-			int rows = produtoDAODB.cadastrar(produto);
-
-			if (rows > 0) {
-				JOptionPane.showMessageDialog(null,
-						"Cadastro Realizado com Sucesso", "Cadastrado(a)", 2);
-			} else {
-				JOptionPane.showMessageDialog(null, "Produto não cadastrado",
-						"ERRO", JOptionPane.ERROR_MESSAGE);
-			}
-
-			textFieldCodigoProduto.setText("");
-			textFieldNomeProduto.setText("");
-			textFieldCategoria.setText("");
-			textFieldPreco.setText("");
-
-		}
-	}
-
-	class ButtonCancelController implements ActionListener {
+	
+	class ButtonOkController implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			dispose();
-
-		}
-	}
+			// TODO Auto-generated method stub
+			
+		}}
 
 	public static void main(String[] args) {
 		new TelaCadastrarProduto();

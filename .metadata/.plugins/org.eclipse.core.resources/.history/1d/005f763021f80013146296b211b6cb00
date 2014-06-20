@@ -90,7 +90,6 @@ public class TelaCadastrarProduto extends JFrame {
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(111, 157, 124, 23);
-		buttonCancelar.addActionListener(new ButtonCancelController());
 		getContentPane().add(buttonCancelar);
 
 	}
@@ -100,35 +99,27 @@ public class TelaCadastrarProduto extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			double preco = Double.parseDouble(textFieldPreco.getText());
-
-			Produto produto = new Produto(textFieldCodigoProduto,
-					textFieldNomeProduto, textFieldCategoria, preco);
-
+			
+			Produto produto = new Produto(textFieldCodigoProduto, textFieldNomeProduto, textFieldCategoria, preco);
+			
 			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
-
-			int rows = produtoDAODB.cadastrar(produto);
-
+			
+			int rows= produtoDAODB.cadastrar(produto);
+			
 			if (rows > 0) {
 				JOptionPane.showMessageDialog(null,
-						"Cadastro Realizado com Sucesso", "Cadastrado(a)", 2);
-			} else {
-				JOptionPane.showMessageDialog(null, "Produto não cadastrado",
-						"ERRO", JOptionPane.ERROR_MESSAGE);
+						"Cadastro Realizado com Sucesso", "Cadastrado(a)",
+						2);
+			}else {
+				JOptionPane.showMessageDialog(null,
+						"Produto não cadastrado", "ERRO",
+						JOptionPane.ERROR_MESSAGE);
 			}
-
+			
 			textFieldCodigoProduto.setText("");
 			textFieldNomeProduto.setText("");
 			textFieldCategoria.setText("");
 			textFieldPreco.setText("");
-
-		}
-	}
-
-	class ButtonCancelController implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			dispose();
 
 		}
 	}

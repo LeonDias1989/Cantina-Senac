@@ -90,7 +90,6 @@ public class TelaCadastrarProduto extends JFrame {
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(111, 157, 124, 23);
-		buttonCancelar.addActionListener(new ButtonCancelController());
 		getContentPane().add(buttonCancelar);
 
 	}
@@ -128,7 +127,7 @@ public class TelaCadastrarProduto extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			dispose();
+			// TODO Auto-generated method stub
 
 		}
 	}
