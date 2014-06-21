@@ -1,5 +1,6 @@
 package br.com.senac.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -34,9 +35,25 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 	}
 
 	@Override
-	public int remover(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int remover(String matricula) {
+
+		int rowsAffect = 0;
+
+		try {
+			iniciarConexão("delete from cliente where matricula = ?");
+
+			preparedStatement.setString(1, matricula);
+
+			rowsAffect = preparedStatement.executeUpdate();
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return rowsAffect;
 	}
 
 	@Override
@@ -46,21 +63,100 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 	}
 
 	@Override
-	public Cliente buscarPorMatricula(String matricula) {
-		// TODO Auto-generated method stub
-		return null;
+	public String buscarPorMatricula(String matricula) {
+
+		ResultSet resultado;
+		String retorno = "";
+		try {
+
+			iniciarConexão("select nome from cliente where matricula = ?");
+
+			preparedStatement.setString(1, matricula);
+
+			resultado = preparedStatement.executeQuery();
+
+			while (resultado.next()) {
+				retorno = resultado.getString("nome");
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 
 	@Override
-	public int creditarSaldo(double saldo) {
+	public int creditarSaldo(double saldo, String matricula) {
 
-		return 0;
+		int rowsAffect = 0;
+
+		try {
+			iniciarConexão("update cliente set saldo = ? + saldo where matricula = ?");
+
+			preparedStatement.setDouble(1, saldo);
+			preparedStatement.setString(2, matricula);
+
+			rowsAffect = preparedStatement.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return rowsAffect;
 	}
 
 	@Override
 	public List<Cliente> getTodosClientes() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int debitarSaldo(double saldo, String matricula) {
+		int rowsAffect = 0;
+
+		double saldoADebitar = saldo - (saldo * 2);
+
+		try {
+			iniciarConexão("update cliente set saldo = ? + saldo where matricula = ?");
+
+			preparedStatement.setDouble(1, saldoADebitar);
+			preparedStatement.setString(2, matricula);
+
+			rowsAffect = preparedStatement.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return rowsAffect;
+	}
+
+	@Override
+	public double getSaldoDataBase(String matricula) {
+
+		ResultSet resultado;
+		double retorno = 0;
+		try {
+
+			iniciarConexão("select saldo from cliente where matricula = ?");
+
+			preparedStatement.setString(1, matricula);
+
+			resultado = preparedStatement.executeQuery();
+
+			while (resultado.next()) {
+				retorno = resultado.getDouble("saldo");
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retorno;
 	}
 
 }

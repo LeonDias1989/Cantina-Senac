@@ -1,11 +1,8 @@
 package br.com.senac.testes;
 
+import java.util.Scanner;
+
 import br.com.senac.dao.ClienteDAODB;
-import br.com.senac.dao.FuncionarioDAODB;
-import br.com.senac.dao.ProdutoDAODB;
-import br.com.senac.model.Cliente;
-import br.com.senac.model.Funcionario;
-import br.com.senac.model.Produto;
 
 public class TesteDAODB {
 
@@ -24,11 +21,39 @@ public class TesteDAODB {
 //		
 //		System.out.println(funcionarioDAODB.cadastrar(funcionario));
 		
-		Produto produto = new Produto("1", "Suco de Laranja", "Bebida", 3.50);
+//		Produto produto = new Produto("1", "Suco de Laranja", "Bebida", 3.50);
+//		
+//		ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+//		
+//		System.out.println(produtoDAODB.cadastrar(produto));
 		
-		ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+//		System.out.println("Digite a matrícula: ");
+//
+//		Scanner var = new Scanner(System.in);
+//
+//		String matricula = var.nextLine();
+//
+//		ClienteDAODB clienteDAODB = new ClienteDAODB();
+//		
+//		System.out.println(clienteDAODB.remover(matricula));
 		
-		System.out.println(produtoDAODB.cadastrar(produto));
+//		System.out.println("Digite a matrícula: ");
+//
+//		Scanner var = new Scanner(System.in);
+//
+//		String matricula = var.nextLine();
+//		
+//		System.out.println("Digite o saldo a ser creditado: ");
+//		
+//		double saldo = var.nextDouble();
+//
+//		ClienteDAODB clienteDAODB = new ClienteDAODB();
+//		
+//		clienteDAODB.creditarSaldo(saldo, matricula);
+		
+		
+		
+		
 
 	}
 

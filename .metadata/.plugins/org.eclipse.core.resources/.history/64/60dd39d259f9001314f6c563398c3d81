@@ -1,0 +1,82 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.SystemColor;
+import java.awt.Color;
+
+@SuppressWarnings("serial")
+public class TelaCreditarSaldo extends JFrame {
+	private JLabel labelMatricula;
+	private JLabel labelCreditarSaldo;
+	private JTextField textFieldMatricula;
+	private JLabel labelValor;
+	private JTextField textFieldValor;
+	private JLabel labelSenhaDoCliente;
+	private JLabel labelSenha;
+	private JPasswordField passwordField;
+	private JButton buttonCreditar;
+
+	public TelaCreditarSaldo() {
+		setTitle("Creditar Saldo");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 461, 311);
+		getContentPane().setLayout(null);
+		
+		labelCreditarSaldo = new JLabel("Creditar Saldo");
+		labelCreditarSaldo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelCreditarSaldo.setBounds(10, 11, 239, 14);
+		getContentPane().add(labelCreditarSaldo);
+		
+		labelMatricula = new JLabel("Matr\u00EDcula");
+		labelMatricula.setBounds(10, 46, 57, 14);
+		getContentPane().add(labelMatricula);
+		
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(77, 43, 118, 20);
+		getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+		
+		labelValor = new JLabel("Valor R$");
+		labelValor.setBounds(10, 71, 57, 14);
+		getContentPane().add(labelValor);
+		
+		textFieldValor = new JTextField();
+		textFieldValor.setText("XXXX,XX");
+		textFieldValor.setBounds(77, 68, 118, 20);
+		getContentPane().add(textFieldValor);
+		textFieldValor.setColumns(10);
+		
+		labelSenhaDoCliente = new JLabel("Senha do Cliente");
+		labelSenhaDoCliente.setBounds(95, 117, 141, 14);
+		getContentPane().add(labelSenhaDoCliente);
+		
+		labelSenha = new JLabel("Senha: ");
+		labelSenha.setBounds(10, 142, 104, 14);
+		getContentPane().add(labelSenha);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(97, 142, 97, 20);
+		getContentPane().add(passwordField);
+		
+		buttonCreditar = new JButton("Creditar");
+		buttonCreditar.setBackground(SystemColor.inactiveCaption);
+		buttonCreditar.setBounds(10, 183, 89, 23);
+		getContentPane().add(buttonCreditar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(255, 153, 102));
+		btnCancelar.setBounds(107, 183, 89, 23);
+		getContentPane().add(btnCancelar);
+		setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+		new TelaCreditarSaldo();
+	}
+}

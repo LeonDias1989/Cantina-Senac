@@ -1,0 +1,50 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class TelaVisualizarSaldo extends JFrame {
+	private JLabel labelVisualizarSaldo;
+	private JLabel labelMatricula;
+	private JButton buttonVisualizar;
+
+	public TelaVisualizarSaldo() {
+		setTitle("Visualizar Saldo");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 242, 225);
+		getContentPane().setLayout(null);
+		
+		labelVisualizarSaldo = new JLabel("Visualizar Saldo");
+		labelVisualizarSaldo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelVisualizarSaldo.setBounds(10, 11, 167, 14);
+		getContentPane().add(labelVisualizarSaldo);
+		
+		labelMatricula = new JLabel("Matr\u00EDcula");
+		labelMatricula.setBounds(10, 57, 64, 14);
+		getContentPane().add(labelMatricula);
+		
+		JTextField textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(67, 54, 111, 20);
+		getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+		
+		buttonVisualizar = new JButton("Visualizar");
+		buttonVisualizar.setBounds(10, 114, 103, 23);
+		getContentPane().add(buttonVisualizar);
+		
+		JButton buttonCancelar = new JButton("Cancelar");
+		buttonCancelar.setBounds(113, 142, 103, 23);
+		getContentPane().add(buttonCancelar);
+		setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+		new TelaVisualizarSaldo();
+	}
+
+}

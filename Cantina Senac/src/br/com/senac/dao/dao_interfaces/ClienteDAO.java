@@ -8,14 +8,18 @@ public interface ClienteDAO {
 	
 	int cadastrar(Cliente cliente);
 
-	int remover(Cliente cliente);
+	int remover(String matricula);
 
 	int atualizar(Cliente cliente);
 
-	Cliente buscarPorMatricula(String matricula);
+	String buscarPorMatricula(String matricula);
 
 	public List<Cliente> getTodosClientes();
+	
+	public double getSaldoDataBase(String matricula);
 
-	int creditarSaldo(double saldo);
+	int creditarSaldo(double saldo, String matricula);
+	
+	int debitarSaldo(double saldo, String matricula);
 
 }

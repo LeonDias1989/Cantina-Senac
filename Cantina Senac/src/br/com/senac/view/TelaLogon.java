@@ -105,7 +105,7 @@ public class TelaLogon extends JFrame {
 		buttonCriarNovoFuncionario
 				.setToolTipText("Cadastrar uma nova conta de funcion\u00E1rio");
 		buttonCriarNovoFuncionario.setBounds(81, 243, 156, 23);
-		buttonCriarNovoFuncionario.addActionListener(new CadastroFuncionario());
+		buttonCriarNovoFuncionario.addActionListener(new TelaCadastrarFuncionario());
 
 		panelSenha.add(buttonCriarNovoFuncionario);
 

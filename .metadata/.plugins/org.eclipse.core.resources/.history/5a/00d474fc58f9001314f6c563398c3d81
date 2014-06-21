@@ -1,0 +1,51 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class TelaCreditarSaldo extends JFrame {
+	private JLabel labelMatricula;
+	private JLabel labelCreditarSaldo;
+	private JTextField textFieldMatricula;
+	private JLabel labelValor;
+	private JTextField textFieldValor;
+
+	public TelaCreditarSaldo() {
+		setTitle("Creditar Saldo");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 461, 311);
+		getContentPane().setLayout(null);
+		
+		labelCreditarSaldo = new JLabel("Creditar Saldo");
+		labelCreditarSaldo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelCreditarSaldo.setBounds(10, 11, 239, 14);
+		getContentPane().add(labelCreditarSaldo);
+		
+		labelMatricula = new JLabel("Matr\u00EDcula");
+		labelMatricula.setBounds(10, 46, 57, 14);
+		getContentPane().add(labelMatricula);
+		
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(77, 43, 118, 20);
+		getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+		
+		labelValor = new JLabel("Valor");
+		labelValor.setBounds(10, 71, 46, 14);
+		getContentPane().add(labelValor);
+		
+		textFieldValor = new JTextField();
+		textFieldValor.setBounds(54, 71, 118, 20);
+		getContentPane().add(textFieldValor);
+		textFieldValor.setColumns(10);
+		setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+		new TelaCreditarSaldo();
+	}
+}
