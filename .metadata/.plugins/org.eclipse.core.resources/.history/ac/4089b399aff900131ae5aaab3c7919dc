@@ -2,6 +2,7 @@ package br.com.senac.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.ProdutoDAO;
 import br.com.senac.model.Produto;

@@ -1,5 +1,7 @@
 package br.com.senac.dao.dao_interfaces;
 
+import java.util.List;
+
 import br.com.senac.model.Produto;
 
 public interface ProdutoDAO {
@@ -11,5 +13,7 @@ public interface ProdutoDAO {
 	int atualizar(Produto produto);
 
 	double buscaValorPorCodigo(int codigo);
+
+	
 
 }

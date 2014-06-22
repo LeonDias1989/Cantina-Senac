@@ -15,17 +15,17 @@ public class VendaDAODB extends DataBase implements VendaDAO {
 		try {
 			iniciarConexão("insert into venda (produtoFK, funcionarioFK, clienteFK) values (?, ?, ?)");
 
+			//Debitar valor do cliente selecionando o preço do produto
+			
 			preparedStatement.setInt(1, codigoProduto);
 			preparedStatement.setString(2, codigoFuncionario);
 			preparedStatement.setString(3, matriculaCliente);
-
+			
 			ClienteDAODB clienteDAODB = new ClienteDAODB();
-
+			
 			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
-
-			clienteDAODB.debitarSaldo(
-					produtoDAODB.buscaValorPorCodigo(codigoProduto),
-					matriculaCliente);
+			
+			clienteDAODB.debitarSaldo(produtoDAODB.buscaValorPorCodigo(codigoProduto), matriculaCliente);
 
 			rowsAffect = preparedStatement.executeUpdate();
 

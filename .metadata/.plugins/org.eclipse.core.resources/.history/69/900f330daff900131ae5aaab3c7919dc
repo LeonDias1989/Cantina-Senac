@@ -2,6 +2,7 @@ package br.com.senac.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.ProdutoDAO;
 import br.com.senac.model.Produto;
@@ -44,19 +45,19 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 	}
 
 	@Override
-	public double buscaValorPorCodigo(int codigo) {
+	public double buscaPorCodigo(int codigo) {
 		ResultSet resultado;
-		double retorno = 0;
+		double retorno = "";
 		try {
 
-			iniciarConexão("select preco from produto where codigo = ?");
+			iniciarConexão("select nome from produto where codigo = ?");
 
 			preparedStatement.setDouble(1, codigo);
 
 			resultado = preparedStatement.executeQuery();
 
 			while (resultado.next()) {
-				retorno = resultado.getDouble("preco");
+				retorno = resultado.getDouble("codigo");
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -65,5 +66,7 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 		}
 		return retorno;
 	}
+
+
 
 }

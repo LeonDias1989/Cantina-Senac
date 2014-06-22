@@ -29,14 +29,14 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaVisualizarSaldo.ButtonCancelarController"/>
-<fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="br.com.senac.model.Cliente"/>
-<fullyQualifiedTypeName name="br.com.senac.dao.ProdutoDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.model.Produto"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.dao_interfaces.VendaDAO"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.DataBase"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.ProdutoDAODB"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.VendaDAODB"/>
 </qualifiedTypeNameHistroy>
