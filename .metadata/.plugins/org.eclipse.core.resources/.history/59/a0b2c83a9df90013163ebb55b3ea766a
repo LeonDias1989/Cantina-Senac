@@ -1,0 +1,5 @@
+package br.com.senac.dao.dao_interfaces;
+
+public interface VendaDAO {
+
+}

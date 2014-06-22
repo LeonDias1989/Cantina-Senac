@@ -13,12 +13,11 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 		int rowsAffect = 0;
 
 		try {
-			iniciarConexão("insert into produto (codigo, nome, categoria, preco) values (?, ?, ?, ?)");
+			iniciarConexão("insert into produto (nome, tipo, preco) values (?, ?, ?)");
 
-			preparedStatement.setString(1, produto.getCodigo());
-			preparedStatement.setString(2, produto.getNome());
-			preparedStatement.setString(3, produto.getCategoria());
-			preparedStatement.setDouble(4, produto.getPreco());
+			preparedStatement.setString(1, produto.getNome());
+			preparedStatement.setString(2, produto.getCategoria());
+			preparedStatement.setDouble(3, produto.getPreco());
 
 			rowsAffect = preparedStatement.executeUpdate();
 

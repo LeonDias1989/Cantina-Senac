@@ -16,8 +16,6 @@ import br.com.senac.model.Produto;
 
 @SuppressWarnings("serial")
 public class TelaCadastrarProduto extends JFrame {
-	private JTextField textFieldCodigoProduto;
-	private JLabel labelCodigoProduto;
 	private JLabel labelNomeProduto;
 	private JTextField textFieldNomeProduto;
 	private JLabel labelCategoriaProduto;
@@ -42,14 +40,6 @@ public class TelaCadastrarProduto extends JFrame {
 	}
 
 	private void iniciarComponentes() {
-		labelCodigoProduto = new JLabel("C\u00F3digo Produto");
-		labelCodigoProduto.setBounds(10, 45, 91, 14);
-		getContentPane().add(labelCodigoProduto);
-
-		textFieldCodigoProduto = new JTextField();
-		textFieldCodigoProduto.setBounds(111, 42, 124, 20);
-		getContentPane().add(textFieldCodigoProduto);
-		textFieldCodigoProduto.setColumns(10);
 
 		labelNomeProduto = new JLabel("Nome ");
 		labelNomeProduto.setBounds(10, 70, 46, 14);
@@ -101,8 +91,8 @@ public class TelaCadastrarProduto extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			double preco = Double.parseDouble(textFieldPreco.getText());
 
-			Produto produto = new Produto(textFieldCodigoProduto,
-					textFieldNomeProduto, textFieldCategoria, preco);
+			Produto produto = new Produto(textFieldNomeProduto.getText(),
+					textFieldCategoria.getText(), preco);
 
 			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
 
@@ -116,7 +106,6 @@ public class TelaCadastrarProduto extends JFrame {
 						"ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 
-			textFieldCodigoProduto.setText("");
 			textFieldNomeProduto.setText("");
 			textFieldCategoria.setText("");
 			textFieldPreco.setText("");

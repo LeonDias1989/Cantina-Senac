@@ -1,0 +1,28 @@
+package br.com.senac.dao;
+
+import java.sql.SQLException;
+
+import br.com.senac.dao.dao_interfaces.VendaDAO;
+
+public class VendaDAODB extends DataBase implements VendaDAO{
+
+	@Override
+	public int venderProduto(int codigoProduto, String codigoFuncionario,
+			String matriculaCliente) {
+		try {
+			iniciarConexão("insert into venda (produtoFK, funcionarioFK, clienteFK) values (?, ?, ?)");
+			
+			preparedStatement.setInt(1, codigoProduto);
+			preparedStatement.setString(2, codigoFuncionario);
+			preparedStatement.setString(3, matriculaCliente);
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+
+}

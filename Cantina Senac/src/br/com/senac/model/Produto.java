@@ -9,18 +9,15 @@ public class Produto {
 	private String categoria;
 	private double preco;
 
-	public Produto(String codigo, String nome, String categoria, double preco) {
+	public Produto(String nome, String categoria, double preco) {
 		super();
-		this.codigo = codigo;
 		this.nome = nome;
 		this.categoria = categoria;
 		this.preco = preco;
 	}
 
-	public Produto(JTextField textFieldCodigoProduto,
-			JTextField textFieldNomeProduto, JTextField textFieldCategoria,
-			double preco) {
-		this.codigo = textFieldCodigoProduto.getText();
+	public Produto(JTextField textFieldNomeProduto,
+			JTextField textFieldCategoria, double preco) {
 		this.nome = textFieldNomeProduto.getText();
 		this.categoria = textFieldCategoria.getText();
 		this.preco = preco;

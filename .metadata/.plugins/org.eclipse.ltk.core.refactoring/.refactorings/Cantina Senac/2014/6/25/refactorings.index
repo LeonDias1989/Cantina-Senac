@@ -18,3 +18,8 @@
 1403229985330	Rename local variable 'arg0'
 1403230223580	Rename local variable 'preco2'
 1403363620578	Rename type 'CadastroFuncionario'
+1403394095147	Delete element
+1403394222486	Rename local variable 'conta'
+1403394283137	Delete element
+1403394295713	Delete element
+1403394323219	Rename package 'br.com.senac.testes'

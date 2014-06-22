@@ -1,0 +1,11 @@
+package br.com.senac.dao.dao_interfaces;
+
+import br.com.senac.model.Produto;
+
+public interface VendaDAO {
+	
+	void comprarProduto();
+	
+	
+
+}
