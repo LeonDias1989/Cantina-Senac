@@ -1,1 +1,4 @@
 1403401663423	Rename method 'buscaPorCodigo'
+1403615580247	Rename type 'LogonCliente'
+1403615612326	Rename type 'LogonFuncionario'
+1403615671928	Rename field 'passwordField2'

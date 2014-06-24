@@ -110,7 +110,7 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 			if (passwordField1.getPassword().equals(passwordField2.getPassword())
 					&& (!passwordField1.getPassword().equals(""))) {
 
-				String senha = new String(passwordField1.getPassword());
+				String senha = passwordField1.getText();
 
 				Funcionario funcionario = new Funcionario(textFieldNome,
 						textFieldCodigoFuncionario, senha);

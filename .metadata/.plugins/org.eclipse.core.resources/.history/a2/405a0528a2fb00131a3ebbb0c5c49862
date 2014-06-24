@@ -19,17 +19,12 @@ import br.com.senac.model.Funcionario;
 public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 
 	private JLabel labelCadastrarFuncionario;
-	private JLabel labelCodigoDoFuncionario;
-	private JLabel labelConfirmeSuaSenha;
-	private JLabel labelNome;
-	private JLabel labelDigiteASenha;
-
 	private JTextField textFieldCodigoFuncionario;
+	private JLabel labelNome;
 	private JTextField textFieldNome;
-
+	private JLabel labelDigiteASenha;
 	private JPasswordField passwordField1;
 	private JPasswordField passwordField2;
-
 	private JButton buttonCadastrar;
 	private JButton buttonCancelar;
 
@@ -51,9 +46,10 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 		labelCadastrarFuncionario.setBounds(104, 35, 202, 14);
 		getContentPane().add(labelCadastrarFuncionario);
 
-		labelCodigoDoFuncionario = new JLabel("Codigo do Funcion\u00E1rio");
-		labelCodigoDoFuncionario.setBounds(104, 105, 149, 14);
-		getContentPane().add(labelCodigoDoFuncionario);
+		JLabel labelCodigoDoFuncionrio = new JLabel(
+				"Codigo do Funcion\u00E1rio");
+		labelCodigoDoFuncionrio.setBounds(104, 105, 149, 14);
+		getContentPane().add(labelCodigoDoFuncionrio);
 
 		textFieldCodigoFuncionario = new JTextField();
 		textFieldCodigoFuncionario.setBounds(104, 121, 167, 20);
@@ -77,7 +73,7 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 		passwordField1.setBounds(104, 190, 167, 20);
 		getContentPane().add(passwordField1);
 
-		labelConfirmeSuaSenha = new JLabel("Confirme sua senha:");
+		JLabel labelConfirmeSuaSenha = new JLabel("Confirme sua senha:");
 		labelConfirmeSuaSenha.setBounds(104, 221, 167, 14);
 		getContentPane().add(labelConfirmeSuaSenha);
 
@@ -105,12 +101,10 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			
-			
-			if (passwordField1.getPassword().equals(passwordField2.getPassword())
-					&& (!passwordField1.getPassword().equals(""))) {
+			if (passwordField1.getText().equals(passwordField2.getText())
+					&& (!passwordField1.getText().equals(""))) {
 
-				String senha = new String(passwordField1.getPassword());
+				String senha = passwordField1.getText();
 
 				Funcionario funcionario = new Funcionario(textFieldNome,
 						textFieldCodigoFuncionario, senha);

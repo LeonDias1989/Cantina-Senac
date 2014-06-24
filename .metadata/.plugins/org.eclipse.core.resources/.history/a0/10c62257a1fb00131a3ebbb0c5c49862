@@ -41,7 +41,6 @@ public class TelaLogon extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1024, 700);
 		getContentPane().setLayout(null);
-		setResizable(false);
 
 	}
 
@@ -86,7 +85,7 @@ public class TelaLogon extends JFrame {
 		buttonFuncionario.setToolTipText("Logar como funcion\u00E1rio");
 		buttonFuncionario.setFont(new Font("Calibri Light", Font.BOLD, 15));
 		buttonFuncionario.setBounds(81, 175, 156, 42);
-		buttonFuncionario.addActionListener(new TelaLogonFuncionario());
+		buttonFuncionario.addActionListener(new LogonFuncionario());
 
 		panelSenha.add(buttonFuncionario);
 
@@ -106,8 +105,7 @@ public class TelaLogon extends JFrame {
 		buttonCriarNovoFuncionario
 				.setToolTipText("Cadastrar uma nova conta de funcion\u00E1rio");
 		buttonCriarNovoFuncionario.setBounds(81, 243, 156, 23);
-		buttonCriarNovoFuncionario
-				.addActionListener(new TelaCadastrarFuncionario());
+		buttonCriarNovoFuncionario.addActionListener(new TelaCadastrarFuncionario());
 
 		panelSenha.add(buttonCriarNovoFuncionario);
 
@@ -128,9 +126,9 @@ public class TelaLogon extends JFrame {
 		getContentPane().add(panelSenha);
 	}
 
-	// TODO CRIAR CLASSE PRINCIPAL PARA EXECUTAR A APLICAÇÃO
+	//TODO CRIAR CLASSE PRINCIPAL PARA EXECUTAR A APLICAÇÃO
 	public static void main(String[] args) {
 		new TelaLogon();
-
+		
 	}
 }

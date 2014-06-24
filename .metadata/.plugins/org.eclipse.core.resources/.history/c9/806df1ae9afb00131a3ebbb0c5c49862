@@ -21,11 +21,11 @@ import java.awt.event.ActionListener;
 public class TelaCreditarSaldo extends JFrame {
 	private JLabel labelMatricula;
 	private JLabel labelCreditarSaldo;
+	private JTextField textFieldMatricula;
+	private JLabel labelValor;
+	private JTextField textFieldValor;
 	private JLabel labelSenhaDoCliente;
 	private JLabel labelSenha;
-	private JLabel labelValor;
-	private JTextField textFieldMatricula;
-	private JTextField textFieldValor;
 	private JPasswordField passwordField;
 	private JButton buttonCreditar;
 	private JButton buttonCancelar;
@@ -40,7 +40,6 @@ public class TelaCreditarSaldo extends JFrame {
 		getContentPane().setLayout(null);
 
 		setVisible(true);
-		setResizable(false);
 
 	}
 
@@ -64,7 +63,7 @@ public class TelaCreditarSaldo extends JFrame {
 		getContentPane().add(labelValor);
 
 		textFieldValor = new JTextField();
-		// textFieldValor.setText("XXXX,XX");
+		textFieldValor.setText("XXXX,XX");
 		textFieldValor.setBounds(77, 68, 118, 20);
 		getContentPane().add(textFieldValor);
 		textFieldValor.setColumns(10);
@@ -105,9 +104,6 @@ public class TelaCreditarSaldo extends JFrame {
 			String matricula = textFieldMatricula.getText();
 			double saldo = Double.parseDouble(textFieldValor.getText());
 
-			// TODO efetuar consultas no banco para validar se foi creditado o
-			// saldo ao funcionário
-
 			ClienteDAODB clienteDAODB = new ClienteDAODB();
 
 			clienteDAODB.creditarSaldo(saldo, matricula);
@@ -116,8 +112,7 @@ public class TelaCreditarSaldo extends JFrame {
 					"Saldo de " + saldo + " reais creditado com sucesso", 2);
 
 			textFieldMatricula.setText("");
-			// textFieldValor.setText("XXX, XX");
-			textFieldValor.setText("");
+			textFieldValor.setText("XXX, XX");
 
 		}
 	}

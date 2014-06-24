@@ -107,7 +107,6 @@ public class TelaCreditarSaldo extends JFrame {
 
 			// TODO efetuar consultas no banco para validar se foi creditado o
 			// saldo ao funcionário
-
 			ClienteDAODB clienteDAODB = new ClienteDAODB();
 
 			clienteDAODB.creditarSaldo(saldo, matricula);
