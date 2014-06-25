@@ -12,7 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import br.com.senac.dao.ClienteDAODB;
+import br.com.senac.model.Cliente;
+
 import java.awt.Color;
+
 import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
@@ -37,11 +40,11 @@ public class TelaVisualizarSaldo extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 224, 228);
 		getContentPane().setLayout(null);
-		
+
 		labelSenha = new JLabel("Senha");
 		labelSenha.setBounds(10, 96, 46, 14);
 		getContentPane().add(labelSenha);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(67, 93, 133, 20);
 		getContentPane().add(passwordField);
@@ -88,13 +91,11 @@ public class TelaVisualizarSaldo extends JFrame {
 
 			ClienteDAODB clienteDAODB = new ClienteDAODB();
 
-			JOptionPane.showMessageDialog(
-					null,
-					"Olá " + clienteDAODB.buscarPorMatricula(matricula)
-							+ "\nSeu saldo é de "
-							+ clienteDAODB.getSaldoDataBase(matricula)
-							+ " reais", "Saldo Atual", 2);
+			Cliente cliente = clienteDAODB.getCliente(matricula);
+			;
 
+			JOptionPane.showMessageDialog(null, "Olá " + cliente.getNome()
+					+ "\n" + "Seu saldo é de " + cliente.getSaldo() + " reais");
 		}
 	}
 

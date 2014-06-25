@@ -44,21 +44,17 @@ public class FuncionarioDAODB extends DataBase implements FuncionarioDAO {
 	}
 
 	@Override
-	public Funcionario buscarPorMatricula(String matricula) {
+	public Funcionario getFuncionario(String codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Funcionario> getTodosClientes() {
+	public List<Funcionario> getTodosFuncionarios() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public int creditarSaldo(double saldo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 }

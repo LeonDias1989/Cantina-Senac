@@ -2,6 +2,7 @@ package br.com.senac.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.ClienteDAO;
@@ -27,7 +28,7 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 			fecharConexao();
 
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO AVISO: NÃO FOI POSSÍVEL EXECUTAR ESTE COMANDO
+
 			e.printStackTrace();
 		}
 
@@ -35,14 +36,14 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 	}
 
 	@Override
-	public int remover(String matricula) {
+	public int remover(Cliente cliente) {
 
 		int rowsAffect = 0;
 
 		try {
 			iniciarConexão("delete from cliente where matricula = ?");
 
-			preparedStatement.setString(1, matricula);
+			preparedStatement.setString(1, cliente.getMatricula());
 
 			rowsAffect = preparedStatement.executeUpdate();
 
@@ -63,27 +64,34 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 	}
 
 	@Override
-	public String buscarPorMatricula(String matricula) {
+	public Cliente getCliente(String matricula) {
 
-		ResultSet resultado;
-		String retorno = "";
+		ResultSet resultSet;
+		Cliente cliente = new Cliente();
 		try {
 
-			iniciarConexão("select nome from cliente where matricula = ?");
+			iniciarConexão("select * from cliente where matricula = ?");
 
 			preparedStatement.setString(1, matricula);
 
-			resultado = preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 
-			while (resultado.next()) {
-				retorno = resultado.getString("nome");
+			while (resultSet.next()) {
+
+				cliente.setMatricula(resultSet.getString("matricula"));
+				cliente.setNome(resultSet.getString("nome"));
+				cliente.setEmail(resultSet.getString("email"));
+				cliente.setSenha(resultSet.getString("senha"));
+				cliente.setSaldo(resultSet.getDouble("saldo"));
 			}
 
+			fecharConexao();
+
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		return retorno;
+		return cliente;
 	}
 
 	@Override
@@ -99,8 +107,10 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 
 			rowsAffect = preparedStatement.executeUpdate();
 
+			fecharConexao();
+
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
@@ -109,8 +119,30 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 
 	@Override
 	public List<Cliente> getTodosClientes() {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultSet;
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		try {
+
+			iniciarConexão("select * from cliente");
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				clientes.add(new Cliente(resultSet.getString("matricula"),
+						resultSet.getString("nome"), resultSet
+								.getString("email"), resultSet
+								.getString("senha")));
+
+			}
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		return clientes;
 	}
 
 	@Override
@@ -127,36 +159,13 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 
 			rowsAffect = preparedStatement.executeUpdate();
 
+			fecharConexao();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return rowsAffect;
-	}
-
-	@Override
-	public double getSaldoDataBase(String matricula) {
-
-		ResultSet resultado;
-		double retorno = 0;
-		try {
-
-			iniciarConexão("select saldo from cliente where matricula = ?");
-
-			preparedStatement.setString(1, matricula);
-
-			resultado = preparedStatement.executeQuery();
-
-			while (resultado.next()) {
-				retorno = resultado.getDouble("saldo");
-			}
-
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return retorno;
 	}
 
 }

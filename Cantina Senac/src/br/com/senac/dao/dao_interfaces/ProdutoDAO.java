@@ -10,6 +10,6 @@ public interface ProdutoDAO {
 
 	int atualizar(Produto produto);
 
-	double buscaValorPorCodigo(int codigo);
+	Produto getProduto(int codigo);
 
 }

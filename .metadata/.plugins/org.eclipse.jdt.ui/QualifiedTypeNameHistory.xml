@@ -39,4 +39,9 @@
 <fullyQualifiedTypeName name="br.com.senac.dao.ProdutoDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.VendaDAODB"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaLogonFuncionario"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaLogonCliente"/>
+<fullyQualifiedTypeName name="br.com.senac.view.Principal"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaCadastrarFuncionario"/>
 </qualifiedTypeNameHistroy>

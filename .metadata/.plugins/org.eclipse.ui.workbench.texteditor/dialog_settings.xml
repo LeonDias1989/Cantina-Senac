@@ -7,6 +7,7 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="if (passwordField1.getPassword().equals("/>
 			<item value="&#x09;&#x09;&#x09;&#x09;// TODO Auto-generated method stub"/>
 		</list>
 		<list key="replacehistory">

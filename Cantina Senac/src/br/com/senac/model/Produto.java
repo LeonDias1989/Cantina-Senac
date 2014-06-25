@@ -8,6 +8,10 @@ public class Produto {
 	private String nome;
 	private String categoria;
 	private double preco;
+	
+	public Produto() {
+
+	}
 
 	public Produto(String nome, String categoria, double preco) {
 		super();
@@ -54,5 +58,13 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
+	@Override
+	public String toString() {
+		return "Produto [codigo=" + codigo + ", nome=" + nome + ", categoria="
+				+ categoria + ", preco=" + preco + "]";
+	}
+	
+	
 
 }

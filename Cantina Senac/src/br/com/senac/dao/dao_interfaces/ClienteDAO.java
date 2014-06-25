@@ -5,21 +5,24 @@ import java.util.List;
 import br.com.senac.model.Cliente;
 
 public interface ClienteDAO {
-	
+
+	/** Retorna o número de linhas afetadas */
 	int cadastrar(Cliente cliente);
 
-	int remover(String matricula);
+	/** Retorna o número de linhas afetadas */
+	int remover(Cliente cliente);
 
+	/** Retorna o número de linhas afetadas */
 	int atualizar(Cliente cliente);
 
-	String buscarPorMatricula(String matricula);
+	Cliente getCliente(String matricula);
 
 	public List<Cliente> getTodosClientes();
-	
-	public double getSaldoDataBase(String matricula);
 
+	/** Retorna o número de linhas afetadas */
 	int creditarSaldo(double saldo, String matricula);
-	
+
+	/** Retorna o número de linhas afetadas */
 	int debitarSaldo(double saldo, String matricula);
 
 }

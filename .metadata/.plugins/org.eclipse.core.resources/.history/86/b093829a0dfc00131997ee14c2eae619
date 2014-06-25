@@ -1,0 +1,28 @@
+package br.com.senac.dao.dao_interfaces;
+
+import java.util.List;
+
+import br.com.senac.model.Cliente;
+
+public interface ClienteDAO {
+
+	/** Retorna o número de linhas afetadas */
+	int cadastrar(Cliente cliente);
+
+	/** Retorna o número de linhas afetadas */
+	int remover(Cliente cliente);
+
+	/** Retorna o número de linhas afetadas */
+	int atualizar(Cliente cliente);
+
+	Cliente buscarPorMatricula(String matricula);
+
+	public List<Cliente> getTodosClientes();
+
+	public double getSaldoDataBase(String matricula);
+
+	int creditarSaldo(double saldo, String matricula);
+
+	int debitarSaldo(double saldo, String matricula);
+
+}
