@@ -1,33 +1,48 @@
 package br.com.senac.view;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class TelaLogonCliente extends JFrame implements ActionListener {
+
 	private JLabel labelClienteLogon;
 	private JLabel labelMatricula;
-	private JTextField textField;
 	private JLabel labelSenha;
+
+	private JTextField textFieldMatricula;
 	private JPasswordField passwordField;
+
 	private JButton buttonOk;
 	private JButton buttonCancelar;
 
 	public TelaLogonCliente() {
+
+		iniciarComponentes();
+
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("Logon Cliente");
-
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 431, 300);
+		setBounds(100, 100, 424, 300);
 		getContentPane().setLayout(null);
+		setResizable(false);
+		setVisible(true);
 
+	}
+
+	public static void main(String[] args) {
+		new TelaLogonCliente();
+	}
+
+	private void iniciarComponentes() {
 		labelClienteLogon = new JLabel("Cliente Logon");
 		labelClienteLogon.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelClienteLogon.setBounds(127, 11, 121, 27);
@@ -37,10 +52,10 @@ public class TelaLogonCliente extends JFrame implements ActionListener {
 		labelMatricula.setBounds(127, 48, 89, 14);
 		getContentPane().add(labelMatricula);
 
-		textField = new JTextField();
-		textField.setBounds(127, 67, 156, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(127, 67, 156, 20);
+		getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
 
 		labelSenha = new JLabel("Senha");
 		labelSenha.setBounds(127, 98, 89, 14);
@@ -57,7 +72,7 @@ public class TelaLogonCliente extends JFrame implements ActionListener {
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(194, 145, 89, 23);
 		getContentPane().add(buttonCancelar);
-		
+
 	}
 
 	@Override

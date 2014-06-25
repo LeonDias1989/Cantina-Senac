@@ -1,0 +1,159 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+
+import br.com.senac.dao.FuncionarioDAODB;
+import br.com.senac.model.Funcionario;
+import java.awt.Color;
+
+@SuppressWarnings("serial")
+public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
+
+	private JLabel labelCadastrarFuncionario;
+	private JLabel labelCodigoDoFuncionario;
+	private JLabel labelConfirmeSuaSenha;
+	private JLabel labelNome;
+	private JLabel labelDigiteASenha;
+
+	private JTextField textFieldCodigoFuncionario;
+	private JTextField textFieldNome;
+
+	private JPasswordField passwordField1;
+	private JPasswordField passwordField2;
+
+	private JButton buttonCadastrar;
+	private JButton buttonCancelar;
+
+	public TelaCadastrarFuncionario() {
+
+		iniciarComponentes();
+
+		getContentPane().setBackground(Color.WHITE);
+		setTitle("Cadastrar Funcion\u00E1rio");
+		setSize(265, 354);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		getContentPane().setLayout(null);
+		setResizable(false);
+		setVisible(true);
+
+	}
+	
+	public static void main(String[] args) {
+		new TelaCadastrarFuncionario();
+	}
+
+	private void iniciarComponentes() {
+		labelCadastrarFuncionario = new JLabel("Cadastrar Funcion\u00E1rio");
+		labelCadastrarFuncionario.setFont(new Font("Tahoma", Font.BOLD, 15));
+		labelCadastrarFuncionario.setBounds(49, 34, 202, 14);
+		getContentPane().add(labelCadastrarFuncionario);
+
+		labelCodigoDoFuncionario = new JLabel("Codigo do Funcion\u00E1rio");
+		labelCodigoDoFuncionario.setBounds(49, 104, 149, 14);
+		getContentPane().add(labelCodigoDoFuncionario);
+
+		textFieldCodigoFuncionario = new JTextField();
+		textFieldCodigoFuncionario.setBounds(49, 120, 167, 20);
+		getContentPane().add(textFieldCodigoFuncionario);
+		textFieldCodigoFuncionario.setColumns(10);
+
+		labelNome = new JLabel("Nome");
+		labelNome.setBounds(49, 59, 46, 14);
+		getContentPane().add(labelNome);
+
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(49, 73, 167, 20);
+		getContentPane().add(textFieldNome);
+		textFieldNome.setColumns(10);
+
+		labelDigiteASenha = new JLabel("Digite a senha");
+		labelDigiteASenha.setBounds(49, 176, 167, 14);
+		getContentPane().add(labelDigiteASenha);
+
+		passwordField1 = new JPasswordField();
+		passwordField1.setBounds(49, 189, 167, 20);
+		getContentPane().add(passwordField1);
+
+		labelConfirmeSuaSenha = new JLabel("Confirme sua senha:");
+		labelConfirmeSuaSenha.setBounds(49, 220, 167, 14);
+		getContentPane().add(labelConfirmeSuaSenha);
+
+		passwordField2 = new JPasswordField();
+		passwordField2.setBounds(49, 233, 167, 20);
+		getContentPane().add(passwordField2);
+
+		buttonCadastrar = new JButton("OK");
+		buttonCadastrar.setToolTipText("Cadastrar funcion\u00E1rio?");
+		buttonCadastrar.setBounds(49, 264, 67, 23);
+		buttonCadastrar.addActionListener(new ButtonCadastrarController());
+		getContentPane().add(buttonCadastrar);
+
+		buttonCancelar = new JButton("Cancelar");
+		buttonCancelar.setToolTipText("Cancelar o cadastro?");
+		buttonCancelar.setBounds(127, 264, 89, 23);
+		buttonCancelar.addActionListener(new ButtonCancelarController());
+		getContentPane().add(buttonCancelar);
+
+	}
+
+	class ButtonCadastrarController implements ActionListener {
+
+		@SuppressWarnings("deprecation")
+		public void actionPerformed(ActionEvent arg0) {
+
+			if (passwordField1.getText().equals(passwordField2.getText())
+					&& (!passwordField1.getText().equals(""))) {
+
+				String senha = new String(passwordField1.getPassword());
+
+				Funcionario funcionario = new Funcionario(textFieldNome,
+						textFieldCodigoFuncionario, senha);
+
+				FuncionarioDAODB funcionarioDAODB = new FuncionarioDAODB();
+
+				int rows = funcionarioDAODB.cadastrar(funcionario);
+
+				if (rows > 0) {
+					JOptionPane.showMessageDialog(null,
+							"Cadastrado com sucesso", "Cadastrado(a)", 2);
+
+				}
+
+				textFieldNome.setText("");
+				textFieldCodigoFuncionario.setText("");
+				passwordField1.setText("");
+				passwordField2.setText("");
+
+			} else
+				JOptionPane.showMessageDialog(null, "ERRO Senhas Diferentes",
+						"ERRO", JOptionPane.ERROR_MESSAGE);
+
+		}
+	}
+
+	class ButtonCancelarController implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			dispose();
+
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		new TelaCadastrarFuncionario();
+		setVisible(true);
+	}
+
+}

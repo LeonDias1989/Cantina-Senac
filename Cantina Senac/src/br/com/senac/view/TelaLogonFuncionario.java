@@ -10,23 +10,35 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class TelaLogonFuncionario extends JFrame implements ActionListener {
+
 	private JLabel labelFuncionrioLogin;
 	private JLabel labelCodigoFuncionario;
 	private JLabel labelSenha;
-	private JTextField textField1;
+
+	private JTextField textFieldCodigoFuncionario;
 	private JPasswordField senhaFuncionario;
+
 	private JButton buttonOK;
 	private JButton buttonCancelar;
 
 	public TelaLogonFuncionario() {
+
+		iniciarComponentes();
+
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("Funcion\u00E1rio Logon");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 391, 300);
 		getContentPane().setLayout(null);
+		setResizable(false);
 
+	}
+
+	private void iniciarComponentes() {
 		labelFuncionrioLogin = new JLabel("Funcion\u00E1rio Login");
 		labelFuncionrioLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelFuncionrioLogin.setBounds(111, 34, 196, 28);
@@ -36,10 +48,10 @@ public class TelaLogonFuncionario extends JFrame implements ActionListener {
 		labelCodigoFuncionario.setBounds(111, 73, 132, 14);
 		getContentPane().add(labelCodigoFuncionario);
 
-		textField1 = new JTextField();
-		textField1.setBounds(111, 88, 145, 20);
-		getContentPane().add(textField1);
-		textField1.setColumns(10);
+		textFieldCodigoFuncionario = new JTextField();
+		textFieldCodigoFuncionario.setBounds(111, 88, 145, 20);
+		getContentPane().add(textFieldCodigoFuncionario);
+		textFieldCodigoFuncionario.setColumns(10);
 
 		labelSenha = new JLabel("Senha");
 		labelSenha.setBounds(111, 119, 46, 14);

@@ -14,6 +14,7 @@ import javax.swing.JButton;
 
 import br.com.senac.dao.FuncionarioDAODB;
 import br.com.senac.model.Funcionario;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
@@ -34,11 +35,12 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 	private JButton buttonCancelar;
 
 	public TelaCadastrarFuncionario() {
-		super("Cadastrar Funcionário");
 
 		iniciarComponentes();
 
-		setSize(395, 450);
+		getContentPane().setBackground(Color.WHITE);
+		setTitle("Cadastrar Funcion\u00E1rio");
+		setSize(313, 404);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setResizable(false);
@@ -48,52 +50,52 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 	private void iniciarComponentes() {
 		labelCadastrarFuncionario = new JLabel("Cadastrar Funcion\u00E1rio");
 		labelCadastrarFuncionario.setFont(new Font("Tahoma", Font.BOLD, 15));
-		labelCadastrarFuncionario.setBounds(104, 35, 202, 14);
+		labelCadastrarFuncionario.setBounds(65, 35, 202, 14);
 		getContentPane().add(labelCadastrarFuncionario);
 
 		labelCodigoDoFuncionario = new JLabel("Codigo do Funcion\u00E1rio");
-		labelCodigoDoFuncionario.setBounds(104, 105, 149, 14);
+		labelCodigoDoFuncionario.setBounds(65, 105, 149, 14);
 		getContentPane().add(labelCodigoDoFuncionario);
 
 		textFieldCodigoFuncionario = new JTextField();
-		textFieldCodigoFuncionario.setBounds(104, 121, 167, 20);
+		textFieldCodigoFuncionario.setBounds(65, 121, 167, 20);
 		getContentPane().add(textFieldCodigoFuncionario);
 		textFieldCodigoFuncionario.setColumns(10);
 
 		labelNome = new JLabel("Nome");
-		labelNome.setBounds(104, 60, 46, 14);
+		labelNome.setBounds(65, 60, 46, 14);
 		getContentPane().add(labelNome);
 
 		textFieldNome = new JTextField();
-		textFieldNome.setBounds(104, 74, 167, 20);
+		textFieldNome.setBounds(65, 74, 167, 20);
 		getContentPane().add(textFieldNome);
 		textFieldNome.setColumns(10);
 
 		labelDigiteASenha = new JLabel("Digite a senha");
-		labelDigiteASenha.setBounds(104, 177, 167, 14);
+		labelDigiteASenha.setBounds(65, 177, 167, 14);
 		getContentPane().add(labelDigiteASenha);
 
 		passwordField1 = new JPasswordField();
-		passwordField1.setBounds(104, 190, 167, 20);
+		passwordField1.setBounds(65, 190, 167, 20);
 		getContentPane().add(passwordField1);
 
 		labelConfirmeSuaSenha = new JLabel("Confirme sua senha:");
-		labelConfirmeSuaSenha.setBounds(104, 221, 167, 14);
+		labelConfirmeSuaSenha.setBounds(65, 221, 167, 14);
 		getContentPane().add(labelConfirmeSuaSenha);
 
 		passwordField2 = new JPasswordField();
-		passwordField2.setBounds(104, 234, 167, 20);
+		passwordField2.setBounds(65, 234, 167, 20);
 		getContentPane().add(passwordField2);
 
 		buttonCadastrar = new JButton("OK");
 		buttonCadastrar.setToolTipText("Cadastrar funcion\u00E1rio?");
-		buttonCadastrar.setBounds(104, 265, 67, 23);
+		buttonCadastrar.setBounds(65, 265, 67, 23);
 		buttonCadastrar.addActionListener(new ButtonCadastrarController());
 		getContentPane().add(buttonCadastrar);
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setToolTipText("Cancelar o cadastro?");
-		buttonCancelar.setBounds(182, 265, 89, 23);
+		buttonCancelar.setBounds(143, 265, 89, 23);
 		buttonCancelar.addActionListener(new ButtonCancelarController());
 		getContentPane().add(buttonCancelar);
 
@@ -102,13 +104,10 @@ public class TelaCadastrarFuncionario extends JFrame implements ActionListener {
 	class ButtonCadastrarController implements ActionListener {
 
 		@SuppressWarnings("deprecation")
-		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			
-			
-			if (passwordField1.getPassword().equals(passwordField2.getPassword())
-					&& (!passwordField1.getPassword().equals(""))) {
+			if (passwordField1.getText().equals(passwordField2.getText())
+					&& (!passwordField1.getText().equals(""))) {
 
 				String senha = new String(passwordField1.getPassword());
 

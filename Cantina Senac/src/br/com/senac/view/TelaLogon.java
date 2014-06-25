@@ -16,21 +16,24 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.border.BevelBorder;
 
 @SuppressWarnings("serial")
 public class TelaLogon extends JFrame {
 
-	private JButton buttonFuncionario;
-	private JButton buttonCliente;
+	private JButton buttonLogFuncionario;
+	private JButton buttonLogCliente;
 	private JButton buttonCriarNovoFuncionario;
+
 	private JLabel labelSenac;
 	private JLabel labelNaoPossuiF;
 	private JLabel labelNaoPossuiC;
+
 	private JPanel panelSenha;
+
 	private JMenu menuArquivo;
 	private JMenuBar menuBar;
 	private JMenuItem menuItemSair;
+	private JButton buttonCriarNovoCliente;
 
 	public TelaLogon() {
 
@@ -72,31 +75,30 @@ public class TelaLogon extends JFrame {
 		labelSenac.setToolTipText("Cantina Senac");
 		labelSenac.setIcon(new ImageIcon(TelaLogon.class
 				.getResource("/Images/login.empresa.png")));
-		labelSenac.setBounds(0, 95, 422, 225);
+		labelSenac.setBounds(0, 144, 422, 225);
 
 		panelSenha = new JPanel();
 		panelSenha.setBackground(Color.WHITE);
-		panelSenha.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null,
-				null, null));
+		panelSenha.setBorder(null);
 		panelSenha.setBounds(507, 72, 436, 578);
 
 		panelSenha.setLayout(null);
 
-		buttonFuncionario = new JButton("Sou Funcion\u00E1rio");
-		buttonFuncionario.setToolTipText("Logar como funcion\u00E1rio");
-		buttonFuncionario.setFont(new Font("Calibri Light", Font.BOLD, 15));
-		buttonFuncionario.setBounds(81, 175, 156, 42);
-		buttonFuncionario.addActionListener(new TelaLogonFuncionario());
+		buttonLogFuncionario = new JButton("Sou Funcion\u00E1rio");
+		buttonLogFuncionario.setToolTipText("Logar como funcion\u00E1rio");
+		buttonLogFuncionario.setFont(new Font("Calibri Light", Font.BOLD, 15));
+		buttonLogFuncionario.setBounds(81, 175, 156, 42);
+		buttonLogFuncionario.addActionListener(new TelaLogonFuncionario());
 
-		panelSenha.add(buttonFuncionario);
+		panelSenha.add(buttonLogFuncionario);
 
-		buttonCliente = new JButton("Sou Cliente");
-		buttonCliente.setToolTipText("Logar como cliente");
-		buttonCliente.setFont(new Font("Calibri Light", Font.BOLD, 15));
-		buttonCliente.setBounds(267, 175, 155, 42);
-		buttonCliente.addActionListener(new TelaLogonCliente());
+		buttonLogCliente = new JButton("Sou Cliente");
+		buttonLogCliente.setToolTipText("Logar como cliente");
+		buttonLogCliente.setFont(new Font("Calibri Light", Font.BOLD, 15));
+		buttonLogCliente.setBounds(267, 175, 155, 42);
+		buttonLogCliente.addActionListener(new TelaLogonCliente());
 
-		panelSenha.add(buttonCliente);
+		panelSenha.add(buttonLogCliente);
 
 		labelNaoPossuiF = new JLabel("N\u00E3o possui cadastro?");
 		labelNaoPossuiF.setBounds(81, 228, 145, 14);
@@ -111,7 +113,7 @@ public class TelaLogon extends JFrame {
 
 		panelSenha.add(buttonCriarNovoFuncionario);
 
-		JButton buttonCriarNovoCliente = new JButton("Crie uma nova conta");
+		buttonCriarNovoCliente = new JButton("Crie uma nova conta");
 		buttonCriarNovoCliente
 				.setToolTipText("Cadastrar uma nova conta de cliente");
 		buttonCriarNovoCliente.setBounds(267, 243, 155, 23);

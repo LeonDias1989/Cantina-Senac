@@ -22,37 +22,34 @@ public class TelaCadastroCliente extends JFrame implements ActionListener {
 
 	private JLabel labelCadastroCliente;
 	private JLabel labelNome;
-	private JTextField textFieldNome;
 	private JLabel labelMatricula;
-	private JTextField textFieldMatricula;
 	private JLabel labelEmail;
-	private JTextField textFieldEmail;
-	private JPasswordField passwordField1;
 	private JLabel labelDigiteASenha;
 	private JLabel labelConfirmeASenha;
+
+	private JTextField textFieldNome;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldEmail;
+
+	private JPasswordField passwordField1;
 	private JPasswordField passwordField2;
+
 	private JButton buttonOk;
 	private JButton buttonCancelar;
-	private JLabel labelAvisoSenha;
 
 	public TelaCadastroCliente() {
 		super("Cadastro Cliente");
 
 		iniciarComponentes();
-
+		getContentPane().setBackground(Color.WHITE);
 		setSize(377, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 
-		labelAvisoSenha = new JLabel("(Max. 8 d\u00EDgitos)");
-		labelAvisoSenha.setForeground(Color.RED);
-		labelAvisoSenha.setBounds(93, 224, 156, 14);
-		getContentPane().add(labelAvisoSenha);
-		setResizable(false);
-
 	}
 
 	private void iniciarComponentes() {
+		
 		labelCadastroCliente = new JLabel("Cadastro Cliente");
 		labelCadastroCliente.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCadastroCliente.setBounds(93, 29, 156, 14);
@@ -85,8 +82,8 @@ public class TelaCadastroCliente extends JFrame implements ActionListener {
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 
-		labelDigiteASenha = new JLabel("Digite a senha");
-		labelDigiteASenha.setBounds(93, 213, 95, 14);
+		labelDigiteASenha = new JLabel("Digite a senha (Max. 8 D\u00EDgitos)");
+		labelDigiteASenha.setBounds(93, 213, 202, 14);
 		getContentPane().add(labelDigiteASenha);
 
 		passwordField1 = new JPasswordField();
@@ -119,14 +116,12 @@ public class TelaCadastroCliente extends JFrame implements ActionListener {
 	class ButtonOkController implements ActionListener {
 
 		@SuppressWarnings("deprecation")
-		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			// TODO MATRÍCULA COMEÇAR COM 63 E EMAIL CONTEM @
 			if (passwordField1.getText().equals(passwordField2.getText())
 					&& (!passwordField1.getText().equals(""))) {
 
-				String senha = passwordField1.getText();
+				String senha = new String(passwordField1.getPassword());
 
 				Cliente cliente = new Cliente(textFieldMatricula,
 						textFieldNome, textFieldEmail, senha);

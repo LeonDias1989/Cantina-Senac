@@ -1,0 +1,67 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import java.awt.Font;
+
+@SuppressWarnings("serial")
+public class Principal extends JFrame {
+	private JPanel panelLog;
+	private JComboBox comboBoxEscolha;
+
+	public Principal() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 680, 448);
+		
+		panelLog = new JPanel();
+		panelLog.setBackground(Color.WHITE);
+		getContentPane().add(panelLog, BorderLayout.CENTER);
+		panelLog.setLayout(null);
+		
+		comboBoxEscolha = new JComboBox();
+		comboBoxEscolha.setModel(new DefaultComboBoxModel(new String[] {"", "Cliente", "Funcion\u00E1rio "}));
+		comboBoxEscolha.setBounds(10, 168, 200, 30);
+		panelLog.add(comboBoxEscolha);
+		
+		JButton btnCadastrarCliente = new JButton("Cliente");
+		btnCadastrarCliente.setBounds(10, 234, 129, 23);
+		panelLog.add(btnCadastrarCliente);
+		
+		JButton btnCadastrarFuncionrio = new JButton("Funcion\u00E1rio");
+		btnCadastrarFuncionrio.setBounds(10, 268, 129, 23);
+		panelLog.add(btnCadastrarFuncionrio);
+		
+		JLabel lblCadastrese = new JLabel("Cadastre-se");
+		lblCadastrese.setBounds(10, 209, 86, 14);
+		panelLog.add(lblCadastrese);
+		
+		JLabel lblAcesseConta = new JLabel("Acesse \u00E0 conta");
+		lblAcesseConta.setBounds(10, 143, 86, 14);
+		panelLog.add(lblAcesseConta);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/Images/login.empresa.png")));
+		lblNewLabel.setBounds(241, 42, 391, 249);
+		panelLog.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cantina Senac");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(10, 77, 151, 14);
+		panelLog.add(lblNewLabel_1);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+	}
+
+	public static void main(String[] args) {
+		new Principal();
+	}
+}

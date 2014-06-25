@@ -12,13 +12,13 @@ import javax.swing.JButton;
 
 import br.com.senac.dao.ClienteDAODB;
 
-import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class TelaCreditarSaldo extends JFrame {
+
 	private JLabel labelMatricula;
 	private JLabel labelCreditarSaldo;
 	private JLabel labelSenhaDoCliente;
@@ -31,6 +31,7 @@ public class TelaCreditarSaldo extends JFrame {
 	private JButton buttonCancelar;
 
 	public TelaCreditarSaldo() {
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("Creditar Saldo");
 
 		iniciarComponentes();
@@ -78,11 +79,10 @@ public class TelaCreditarSaldo extends JFrame {
 		getContentPane().add(labelSenha);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 142, 97, 20);
+		passwordField.setBounds(77, 142, 117, 20);
 		getContentPane().add(passwordField);
 
 		buttonCreditar = new JButton("Creditar");
-		buttonCreditar.setBackground(SystemColor.inactiveCaption);
 		buttonCreditar.setBounds(10, 183, 89, 23);
 
 		buttonCreditar.addActionListener(new ButtonCreditarController());
@@ -90,7 +90,6 @@ public class TelaCreditarSaldo extends JFrame {
 		getContentPane().add(buttonCreditar);
 
 		buttonCancelar = new JButton("Cancelar");
-		buttonCancelar.setBackground(new Color(255, 153, 102));
 		buttonCancelar.setBounds(107, 183, 89, 23);
 		buttonCancelar.addActionListener(new ButtonCancelarController());
 		getContentPane().add(buttonCancelar);

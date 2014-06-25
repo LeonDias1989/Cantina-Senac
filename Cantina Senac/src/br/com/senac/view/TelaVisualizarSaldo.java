@@ -12,19 +12,46 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import br.com.senac.dao.ClienteDAODB;
+import java.awt.Color;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class TelaVisualizarSaldo extends JFrame {
+
 	private JLabel labelVisualizarSaldo;
 	private JLabel labelMatricula;
+
 	private JButton buttonVisualizar;
+	private JButton buttonCancelar;
+
 	private JTextField textFieldMatricula;
+	private JLabel labelSenha;
+	private JPasswordField passwordField;
 
 	public TelaVisualizarSaldo() {
+
+		iniciarComponentes();
+
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("Visualizar Saldo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 224, 225);
+		setBounds(100, 100, 224, 228);
 		getContentPane().setLayout(null);
+		
+		labelSenha = new JLabel("Senha");
+		labelSenha.setBounds(10, 96, 46, 14);
+		getContentPane().add(labelSenha);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(67, 93, 133, 20);
+		getContentPane().add(passwordField);
+
+		setVisible(true);// TODO trocar depois, apenas para teste
+		setResizable(false);
+
+	}
+
+	private void iniciarComponentes() {
 
 		labelVisualizarSaldo = new JLabel("Visualizar Saldo");
 		labelVisualizarSaldo.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -41,15 +68,14 @@ public class TelaVisualizarSaldo extends JFrame {
 		textFieldMatricula.setColumns(10);
 
 		buttonVisualizar = new JButton("OK");
-		buttonVisualizar.setBounds(10, 114, 84, 23);
+		buttonVisualizar.setBounds(10, 142, 84, 23);
 		buttonVisualizar.addActionListener(new ButtonVisualizarSaldo());
 		getContentPane().add(buttonVisualizar);
 
-		JButton buttonCancelar = new JButton("Cancelar");
-		buttonCancelar.setBounds(104, 114, 96, 23);
-		getContentPane().add(buttonCancelar);
+		buttonCancelar = new JButton("Cancelar");
+		buttonCancelar.setBounds(104, 142, 96, 23);
 		buttonCancelar.addActionListener(new ButtonCancelarController());
-		setVisible(true);
+		getContentPane().add(buttonCancelar);
 
 	}
 
@@ -84,5 +110,4 @@ public class TelaVisualizarSaldo extends JFrame {
 	public static void main(String[] args) {
 		new TelaVisualizarSaldo();
 	}
-
 }
