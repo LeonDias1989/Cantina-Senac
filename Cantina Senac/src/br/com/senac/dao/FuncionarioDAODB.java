@@ -1,5 +1,6 @@
 package br.com.senac.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -46,8 +47,31 @@ public class FuncionarioDAODB extends DataBase implements FuncionarioDAO {
 
 	@Override
 	public Funcionario getFuncionario(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ResultSet resultSet;
+		Funcionario funcionario = new Funcionario();
+		try {
+
+			iniciarConexão("select * from funcionario where codigo = ?");
+
+			preparedStatement.setString(1, codigo);
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				funcionario.setNome(resultSet.getString("nome"));
+				funcionario.setCodigoFuncionario(resultSet.getString("codigo"));
+				funcionario.setSenha(resultSet.getString("senha"));
+			}
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		return funcionario;
 	}
 
 	@Override

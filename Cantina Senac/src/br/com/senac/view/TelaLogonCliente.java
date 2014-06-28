@@ -5,11 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import br.com.senac.dao.ClienteDAODB;
+import br.com.senac.model.Cliente;
 
 @SuppressWarnings("serial")
 public class TelaLogonCliente extends JFrame implements ActionListener {
@@ -43,6 +47,7 @@ public class TelaLogonCliente extends JFrame implements ActionListener {
 	}
 
 	private void iniciarComponentes() {
+
 		labelClienteLogon = new JLabel("Cliente Logon");
 		labelClienteLogon.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelClienteLogon.setBounds(127, 11, 121, 27);
@@ -67,18 +72,65 @@ public class TelaLogonCliente extends JFrame implements ActionListener {
 
 		buttonOk = new JButton("OK");
 		buttonOk.setBounds(127, 145, 62, 23);
+		buttonOk.addActionListener(new ControllerTelaLogonCliente());
 		getContentPane().add(buttonOk);
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(194, 145, 89, 23);
+		buttonCancelar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+
 		getContentPane().add(buttonCancelar);
 
 	}
 
+	class ControllerTelaLogonCliente implements ActionListener {
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			ClienteDAODB clienteDAODB = new ClienteDAODB();
+
+			/** Consulta cliente pela matrícula */
+			Cliente cliente = clienteDAODB.getCliente(textFieldMatricula
+					.getText());
+
+			/** Valida se a senha do digitada pertence à matrícula digitada */
+			if (cliente.getSenha().equals(passwordField.getText())) {
+
+				TelaPrincipalCliente telaPrincipalCliente = new TelaPrincipalCliente();
+				telaPrincipalCliente.setVisible(true);
+
+				telaPrincipalCliente.getTextFieldEmail().setText(
+						cliente.getEmail());
+				telaPrincipalCliente.getTextFieldNomeCliente().setText(
+						cliente.getNome());
+				telaPrincipalCliente.getTextFieldMatricula().setText(
+						cliente.getMatricula());
+				telaPrincipalCliente.getTextFielSaldo().setText(
+						"" + cliente.getSaldo() + " R$");
+
+				dispose();
+
+			} else
+				JOptionPane.showMessageDialog(null,
+						"Usuário ou senha inválidos", "ERRO",
+						JOptionPane.ERROR_MESSAGE);
+
+		}
+
+	}
+
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
+
 		new TelaLogonCliente();
-		setVisible(true);
 
 	}
 

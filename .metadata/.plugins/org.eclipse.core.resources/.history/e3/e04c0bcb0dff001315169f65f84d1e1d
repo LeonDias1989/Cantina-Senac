@@ -1,0 +1,157 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.SystemColor;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+
+@SuppressWarnings("serial")
+public class TelaPrincipalCliente extends JFrame {
+	private JMenuBar barraDeMenus;
+	private JMenu menuArquivo;
+	private JMenuItem menuItemSair;
+	private JPanel painelDadosCliente;
+	private JLabel labelBemVindo;
+	private JLabel labelMatricula;
+	private JLabel labelEmail;
+	private JTextField textFieldNomeCliente;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldEmail;
+	private JLabel lblCreditarSaldo;
+	private JButton btnNewButton;
+	private JLabel lblVisualizarCompras;
+
+
+	
+
+	public JTextField getTextFieldNomeCliente() {
+		return textFieldNomeCliente;
+	}
+
+	public JTextField getTextFieldMatricula() {
+		return textFieldMatricula;
+	}
+
+	public JTextField getTextFieldEmail() {
+		return textFieldEmail;
+	}
+
+	public TelaPrincipalCliente() {
+
+		iniciarMenuBar();
+		iniciarPanelDadosCliente();
+
+		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setLayout(null);
+		
+		JPanel painelOperacoesCliente = new JPanel();
+		painelOperacoesCliente.setBackground(SystemColor.inactiveCaption);
+		painelOperacoesCliente.setBounds(10, 231, 268, 467);
+		getContentPane().add(painelOperacoesCliente);
+		painelOperacoesCliente.setLayout(null);
+		
+		JButton btnSaldo = new JButton("");
+		btnSaldo.setBackground(SystemColor.inactiveCaption);
+		btnSaldo.setIcon(new ImageIcon(TelaPrincipalCliente.class.getResource("/Images/ValueIcon.png")));
+		btnSaldo.setBounds(10, 68, 104, 78);
+		painelOperacoesCliente.add(btnSaldo);
+		
+		lblCreditarSaldo = new JLabel("Creditar Saldo");
+		lblCreditarSaldo.setBounds(10, 41, 104, 14);
+		painelOperacoesCliente.add(lblCreditarSaldo);
+		
+		btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(TelaPrincipalCliente.class.getResource("/Images/compras.jpg")));
+		btnNewButton.setBackground(SystemColor.inactiveCaption);
+		btnNewButton.setBounds(10, 197, 104, 92);
+		painelOperacoesCliente.add(btnNewButton);
+		
+		lblVisualizarCompras = new JLabel("Visualizar Compras");
+		lblVisualizarCompras.setBounds(10, 172, 104, 14);
+		painelOperacoesCliente.add(lblVisualizarCompras);
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(TelaPrincipalCliente.class.getResource("/Images/TotalValueIcon.png")));
+		btnNewButton_1.setBounds(10, 328, 104, 109);
+		painelOperacoesCliente.add(btnNewButton_1);
+		
+		JLabel lblVisualizarSaldo = new JLabel("Visualizar Saldo");
+		lblVisualizarSaldo.setBounds(10, 303, 104, 14);
+		painelOperacoesCliente.add(lblVisualizarSaldo);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setSize(1366, 768);
+		setVisible(true);
+
+	}
+
+	private void iniciarMenuBar() {
+
+		barraDeMenus = new JMenuBar();
+		setJMenuBar(barraDeMenus);
+
+		menuArquivo = new JMenu("Arquivo");
+		menuArquivo.setMnemonic('a');
+		barraDeMenus.add(menuArquivo);
+
+		menuItemSair = new JMenuItem("Sair");
+		menuItemSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
+				InputEvent.CTRL_MASK));
+		menuArquivo.add(menuItemSair);
+
+	}
+
+	private void iniciarPanelDadosCliente() {
+		painelDadosCliente = new JPanel();
+		painelDadosCliente.setBackground(SystemColor.inactiveCaption);
+		painelDadosCliente.setBounds(10, 34, 268, 186);
+		getContentPane().add(painelDadosCliente);
+		painelDadosCliente.setLayout(null);
+
+		labelBemVindo = new JLabel("Bem vindo:");
+		labelBemVindo.setBounds(10, 11, 80, 14);
+		painelDadosCliente.add(labelBemVindo);
+
+		labelMatricula = new JLabel("Matr\u00EDcula:");
+		labelMatricula.setBounds(10, 44, 80, 14);
+		painelDadosCliente.add(labelMatricula);
+
+		labelEmail = new JLabel("E-mail");
+		labelEmail.setBounds(10, 69, 46, 14);
+		painelDadosCliente.add(labelEmail);
+		
+		textFieldNomeCliente = new JTextField();
+		textFieldNomeCliente.setEditable(false);
+		textFieldNomeCliente.setBounds(100, 8, 158, 20);
+		painelDadosCliente.add(textFieldNomeCliente);
+		textFieldNomeCliente.setColumns(10);
+		
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setEditable(false);
+		textFieldMatricula.setBounds(100, 41, 158, 20);
+		painelDadosCliente.add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+		
+		textFieldEmail = new JTextField();
+		textFieldEmail.setEditable(false);
+		textFieldEmail.setBounds(100, 66, 158, 20);
+		painelDadosCliente.add(textFieldEmail);
+		textFieldEmail.setColumns(10);
+
+	}
+
+	public static void main(String[] args) {
+		new TelaPrincipalCliente();
+
+	}
+}

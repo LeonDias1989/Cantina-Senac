@@ -1,0 +1,195 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import net.miginfocom.swing.MigLayout;
+
+@SuppressWarnings("serial")
+public class TelaPrincipalCliente extends JFrame {
+	private JMenuBar barraDeMenus;
+	private JMenu menuArquivo;
+	private JMenuItem menuItemSair;
+	private JPanel panelDados;
+	private JLabel labelMatricula;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldEmail;
+	private JLabel lblEmail;
+	private JLabel labelSaldo;
+	private JTextField textFieldSaldo;
+	private JLabel labelCumprimento;
+	private JTextField textField;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JPanel panel;
+	private JButton buttonCreditarSaldo;
+	private JButton buttonVisualizarSaldo;
+	private JLabel lblSaldo;
+	private JButton buttonVisualizarVendas;
+	private JLabel labelVendas;
+
+	public TelaPrincipalCliente() {
+		getContentPane().setBackground(Color.WHITE);
+
+		iniciarPanelOeste();
+
+		iniciarMenuBar();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 709, 477);
+
+	}
+
+	private void iniciarMenuBar() {
+
+		barraDeMenus = new JMenuBar();
+		setJMenuBar(barraDeMenus);
+
+		menuArquivo = new JMenu("Arquivo");
+		menuArquivo.setMnemonic('a');
+		barraDeMenus.add(menuArquivo);
+
+		menuItemSair = new JMenuItem("Sair");
+		menuItemSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
+				InputEvent.CTRL_MASK));
+		menuArquivo.add(menuItemSair);
+		setVisible(true);
+
+	}
+
+	private void iniciarPanelOeste() {
+
+		panelDados = new JPanel();
+		panelDados.setBackground(Color.WHITE);
+		getContentPane().add(panelDados, BorderLayout.WEST);
+		panelDados.setLayout(new MigLayout("", "[86px][86px]", "[41px][][][41px][][][41px][][][][][][41px][41px][][41px][41px][41px]"));
+		
+				labelCumprimento = new JLabel("Ol\u00E1");
+				panelDados.add(labelCumprimento, "cell 0 1,grow");
+		
+				textField = new JTextField();
+				textField.setEditable(false);
+				panelDados.add(textField, "cell 0 2,grow");
+				textField.setColumns(10);
+		
+		label = new JLabel("");
+		panelDados.add(label, "cell 0 3,grow");
+		
+		label_1 = new JLabel("");
+		panelDados.add(label_1, "cell 1 3,grow");
+		
+				labelMatricula = new JLabel("Matr\u00EDcula");
+				panelDados.add(labelMatricula, "cell 0 4,grow");
+		
+				textFieldMatricula = new JTextField();
+				textFieldMatricula.setEditable(false);
+				panelDados.add(textFieldMatricula, "cell 0 5,grow");
+				textFieldMatricula.setColumns(10);
+		
+		label_2 = new JLabel("");
+		panelDados.add(label_2, "cell 0 6,grow");
+		
+		label_3 = new JLabel("");
+		panelDados.add(label_3, "flowy,cell 1 6,grow");
+		
+				lblEmail = new JLabel("Email");
+				panelDados.add(lblEmail, "cell 0 7,grow");
+		
+				textFieldEmail = new JTextField();
+				textFieldEmail.setEditable(false);
+				panelDados.add(textFieldEmail, "cell 0 8,grow");
+				textFieldEmail.setColumns(10);
+		
+				labelSaldo = new JLabel("Saldo");
+				panelDados.add(labelSaldo, "cell 0 10,grow");
+		
+				textFieldSaldo = new JTextField();
+				textFieldSaldo.setEditable(false);
+				panelDados.add(textFieldSaldo, "cell 0 11,grow");
+				textFieldSaldo.setColumns(10);
+		
+		label_4 = new JLabel("");
+		panelDados.add(label_4, "cell 0 12,grow");
+		
+		label_5 = new JLabel("");
+		panelDados.add(label_5, "cell 1 12,grow");
+		
+		label_6 = new JLabel("");
+		panelDados.add(label_6, "cell 0 17,grow");
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		getContentPane().add(panel, BorderLayout.EAST);
+		panel.setLayout(new MigLayout("", "[71px][77px]", "[23px][][][][][][][]"));
+		
+		lblSaldo = new JLabel("Saldo");
+		panel.add(lblSaldo, "cell 1 2");
+		
+		buttonCreditarSaldo = new JButton("Creditar");
+		buttonCreditarSaldo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panel.add(buttonCreditarSaldo, "cell 1 3,alignx left,aligny center");
+		
+		buttonVisualizarSaldo = new JButton("Visualizar");
+		buttonVisualizarSaldo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panel.add(buttonVisualizarSaldo, "cell 1 4,alignx left,aligny center");
+		
+		labelVendas = new JLabel("Vendas");
+		panel.add(labelVendas, "cell 1 6");
+		
+		buttonVisualizarVendas = new JButton("Visualizar ");
+		panel.add(buttonVisualizarVendas, "cell 1 7");
+
+	}
+
+	public void setTextFieldNome(String texto) {
+		this.textField.setText(texto);
+	}
+
+	public void setTextFieldMatricula(String texto) {
+		this.textFieldMatricula.setText(texto);
+	}
+
+	public void setTextFieldEmail(String texto) {
+		this.textFieldEmail.setText(texto);
+	}
+
+	public void setTextFieldSaldo(String texto) {
+		this.textFieldSaldo.setText(texto);
+	}
+	
+	public static void main(String[] args) {
+		new TelaPrincipalCliente();
+		
+	}
+
+}

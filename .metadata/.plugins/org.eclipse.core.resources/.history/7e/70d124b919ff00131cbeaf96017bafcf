@@ -1,0 +1,86 @@
+package br.com.senac.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import br.com.senac.dao.dao_interfaces.FuncionarioDAO;
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.Cliente;
+import br.com.senac.model.Funcionario;
+
+public class FuncionarioDAODB extends DataBase implements FuncionarioDAO {
+
+	@Override
+	public int cadastrar(Funcionario funcionario) {
+		int rowsAffect = 0;
+
+		try {
+			iniciarConexão("insert into funcionario (nome, codigo, senha) values (?, ?, ?)");
+
+			preparedStatement.setString(1, funcionario.getNome());
+			preparedStatement.setString(2, funcionario.getCodigoFuncionario());
+			preparedStatement.setString(3, funcionario.getSenha());
+
+			rowsAffect = preparedStatement.executeUpdate();
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO AVISO: NÃO FOI POSSÍVEL EXECUTAR ESTE COMANDO
+			e.printStackTrace();
+		}
+
+		return rowsAffect;
+	}
+
+	@Override
+	public int remover(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int atualizar(Funcionario funcionario) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Funcionario getFuncionario(String codigo) {
+		
+		ResultSet resultSet;
+		Funcionario funcionario = new Funcionario();
+		try {
+
+			iniciarConexão("select * from funcionario where codigo = ?");
+
+			preparedStatement.setString(1, codigo);
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				funcionario.setNome(resultSet.getString("nome"));
+				funcionario.setCodigoFuncionario("codigo");
+				funcionario.setSenha("senha");
+			}
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		return funcionario;
+	}
+
+	@Override
+	public List<Funcionario> getTodosFuncionarios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+}

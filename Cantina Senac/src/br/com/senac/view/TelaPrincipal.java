@@ -39,14 +39,15 @@ public class TelaPrincipal extends JFrame {
 	private JMenuBar menuBar;
 	private JMenuItem menuItemSair;
 	private JLabel labelSenac;
-	private String vector[]=  {"", "Cliente", "Funcionario"};
+	private String vector[] = { "", "Cliente", "Funcionario" };
+	private JButton buttonSair;
 
 	public TelaPrincipal() {
 		setTitle("Menu Principal");
 
 		iniciarComponentes();
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 626, 448);
 		setResizable(false);
 		setVisible(true);
@@ -65,7 +66,6 @@ public class TelaPrincipal extends JFrame {
 		comboBoxEscolha.setModel(new DefaultComboBoxModel(vector));
 		comboBoxEscolha.setBounds(10, 168, 200, 30);
 		comboBoxEscolha.addActionListener(new ComboEscolhaController());
-		// TODO
 
 		panelLog.add(comboBoxEscolha);
 
@@ -98,6 +98,22 @@ public class TelaPrincipal extends JFrame {
 				.getResource("/Images/login.empresa.png")));
 		labelSenac.setBounds(278, 80, 390, 177);
 		panelLog.add(labelSenac);
+
+		buttonSair = new JButton("");
+		buttonSair.setToolTipText("Sair da Aplicação?");
+		buttonSair.setBackground(Color.WHITE);
+		buttonSair.setIcon(new ImageIcon(TelaPrincipal.class
+				.getResource("/Images/Log Out.png")));
+		buttonSair.setBounds(531, 322, 79, 66);
+		buttonSair.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+
+			}
+		});
+		panelLog.add(buttonSair);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

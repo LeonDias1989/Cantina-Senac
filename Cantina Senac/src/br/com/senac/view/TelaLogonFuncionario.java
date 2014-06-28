@@ -7,9 +7,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
+import br.com.senac.dao.FuncionarioDAODB;
+import br.com.senac.model.Funcionario;
+
 import java.awt.Color;
 
 @SuppressWarnings("serial")
@@ -64,12 +69,49 @@ public class TelaLogonFuncionario extends JFrame implements ActionListener {
 
 		buttonOK = new JButton("OK");
 		buttonOK.setBounds(111, 165, 52, 23);
+		buttonOK.addActionListener(new ControllerTelaLogonFuncionario());
 		getContentPane().add(buttonOK);
 
 		buttonCancelar = new JButton("Cancelar");
 		buttonCancelar.setBounds(168, 165, 88, 23);
+		buttonCancelar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+
+			}
+		});
 		getContentPane().add(buttonCancelar);
 
+	}
+
+	class ControllerTelaLogonFuncionario implements ActionListener {
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			FuncionarioDAODB funcionarioDAODB = new FuncionarioDAODB();
+
+			Funcionario funcionario = funcionarioDAODB
+					.getFuncionario(textFieldCodigoFuncionario.getText());
+
+			if (funcionario.getSenha().equals(senhaFuncionario.getText())) {
+
+				TelaPrincipalFuncionario principalFuncionario = new TelaPrincipalFuncionario();
+
+				principalFuncionario.getTextFieldNome().setText(
+						funcionario.getNome());
+				principalFuncionario.getTextFieldCodigoFuncionario().setText(
+						funcionario.getCodigoFuncionario());
+
+				dispose();
+			}
+			else 
+				JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
+
+		}
 	}
 
 	@Override

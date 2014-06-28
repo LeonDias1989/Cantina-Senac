@@ -22,6 +22,10 @@ public class Funcionario {
 		this.senha = senha;
 	}
 
+	public Funcionario() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNome() {
 		return nome;
 	}

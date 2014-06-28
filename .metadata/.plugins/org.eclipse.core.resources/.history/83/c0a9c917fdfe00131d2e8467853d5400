@@ -1,0 +1,149 @@
+package br.com.senac.view;
+
+import javax.swing.JFrame;
+
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+@SuppressWarnings("serial")
+public class TelaPrincipalCliente extends JFrame {
+	private JMenuBar barraDeMenus;
+	private JMenu menuArquivo;
+	private JMenuItem menuItemSair;
+	private JPanel panelDados;
+	private JLabel labelMatricula;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldEmail;
+	private JLabel lblEmail;
+	private JLabel labelSaldo;
+	private JTextField textFieldSaldo;
+	private JLabel labelCumprimento;
+	private JTextField textField;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+
+	public TelaPrincipalCliente() {
+		getContentPane().setBackground(Color.WHITE);
+
+		iniciarPanelOeste();
+
+		iniciarMenuBar();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 709, 477);
+
+	}
+
+	private void iniciarMenuBar() {
+
+		barraDeMenus = new JMenuBar();
+		setJMenuBar(barraDeMenus);
+
+		menuArquivo = new JMenu("Arquivo");
+		menuArquivo.setMnemonic('a');
+		barraDeMenus.add(menuArquivo);
+
+		menuItemSair = new JMenuItem("Sair");
+		menuItemSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
+				InputEvent.CTRL_MASK));
+		menuArquivo.add(menuItemSair);
+
+	}
+
+	private void iniciarPanelOeste() {
+
+		panelDados = new JPanel();
+		panelDados.setBackground(Color.WHITE);
+		getContentPane().add(panelDados, BorderLayout.WEST);
+		panelDados.setLayout(new GridLayout(0, 1, 0, 0));
+
+		labelCumprimento = new JLabel("Ol\u00E1");
+		panelDados.add(labelCumprimento);
+		
+				textField = new JTextField();
+				textField.setEditable(false);
+				panelDados.add(textField);
+				textField.setColumns(10);
+		
+		label = new JLabel("");
+		panelDados.add(label);
+		
+		label_1 = new JLabel("");
+		panelDados.add(label_1);
+		
+		label_2 = new JLabel("");
+		panelDados.add(label_2);
+		
+		label_3 = new JLabel("");
+		panelDados.add(label_3);
+		
+		label_4 = new JLabel("");
+		panelDados.add(label_4);
+		
+		label_5 = new JLabel("");
+		panelDados.add(label_5);
+		
+		label_6 = new JLabel("");
+		panelDados.add(label_6);
+
+		labelMatricula = new JLabel("Matr\u00EDcula");
+		panelDados.add(labelMatricula);
+
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setEditable(false);
+		panelDados.add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+
+		lblEmail = new JLabel("Email");
+		panelDados.add(lblEmail);
+
+		textFieldEmail = new JTextField();
+		textFieldEmail.setEditable(false);
+		panelDados.add(textFieldEmail);
+		textFieldEmail.setColumns(10);
+
+		labelSaldo = new JLabel("Saldo");
+		panelDados.add(labelSaldo);
+
+		textFieldSaldo = new JTextField();
+		textFieldSaldo.setEditable(false);
+		panelDados.add(textFieldSaldo);
+		textFieldSaldo.setColumns(10);
+
+	}
+
+	public void setTextFieldNome(String texto) {
+		this.textField.setText(texto);
+	}
+
+	public void setTextFieldMatricula(String texto) {
+		this.textFieldMatricula.setText(texto);
+	}
+
+	public void setTextFieldEmail(String texto) {
+		this.textFieldEmail.setText(texto);
+	}
+
+	public void setTextFieldSaldo(String texto) {
+		this.textFieldSaldo.setText(texto);
+	}
+
+}

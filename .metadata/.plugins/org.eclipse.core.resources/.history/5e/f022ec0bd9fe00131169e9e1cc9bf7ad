@@ -1,0 +1,19 @@
+package br.com.senac.controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import br.com.senac.view.TelaLogonCliente;
+import br.com.senac.view.TelaPrincipalCliente;
+
+public class ControllerTelaLogonCliente implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		TelaPrincipalCliente telaPrincipalCliente = new TelaPrincipalCliente();
+		telaPrincipalCliente.setVisible(true);
+
+	}
+
+}

@@ -12,3 +12,14 @@
 1403664545296	Rename method 'buscaValorPorCodigo'
 1403965178421	Delete element
 1403966737936	Delete element
+1403968671864	Rename field 'btnNewButton'
+1403969026936	Rename local variable 'arg0'
+1403969391289	Delete element
+1403981014727	Rename field 'menuBar'
+1403981054333	Rename field 'panel'
+1403983740831	Rename local variable 'type'
+1403983787669	Rename local variable 'type'
+1403990322089	Rename method 'iniciarPanelOeste'
+1403992961907	Rename method 'getTextField'
+1403993302198	Delete element
+1403993391820	Rename local variable 'arg0'
