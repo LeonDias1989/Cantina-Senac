@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.FuncionarioDAO;
+import br.com.senac.lib.DataBase;
 import br.com.senac.model.Funcionario;
 
 public class FuncionarioDAODB extends DataBase implements FuncionarioDAO {

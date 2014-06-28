@@ -45,11 +45,12 @@ public class TelaCadastroCliente extends JFrame implements ActionListener {
 		setSize(377, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
+		setResizable(false);
 
 	}
 
 	private void iniciarComponentes() {
-		
+
 		labelCadastroCliente = new JLabel("Cadastro Cliente");
 		labelCadastroCliente.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCadastroCliente.setBounds(93, 29, 156, 14);

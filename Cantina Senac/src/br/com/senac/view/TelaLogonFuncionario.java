@@ -35,6 +35,7 @@ public class TelaLogonFuncionario extends JFrame implements ActionListener {
 		setBounds(100, 100, 391, 300);
 		getContentPane().setLayout(null);
 		setResizable(false);
+		setVisible(true);
 
 	}
 
@@ -74,7 +75,6 @@ public class TelaLogonFuncionario extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new TelaLogonFuncionario();
-		setVisible(true);
 
 	}
 

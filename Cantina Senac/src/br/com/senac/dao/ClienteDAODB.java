@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.ClienteDAO;
+import br.com.senac.lib.DataBase;
 import br.com.senac.model.Cliente;
 
 public class ClienteDAODB extends DataBase implements ClienteDAO {

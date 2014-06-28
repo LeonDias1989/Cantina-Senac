@@ -3,6 +3,7 @@ package br.com.senac.dao;
 import java.sql.SQLException;
 
 import br.com.senac.dao.dao_interfaces.VendaDAO;
+import br.com.senac.lib.DataBase;
 import br.com.senac.model.Produto;
 
 public class VendaDAODB extends DataBase implements VendaDAO {

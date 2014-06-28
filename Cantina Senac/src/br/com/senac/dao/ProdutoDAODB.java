@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.senac.dao.dao_interfaces.ProdutoDAO;
+import br.com.senac.lib.DataBase;
 import br.com.senac.model.Produto;
 
 public class ProdutoDAODB extends DataBase implements ProdutoDAO {
