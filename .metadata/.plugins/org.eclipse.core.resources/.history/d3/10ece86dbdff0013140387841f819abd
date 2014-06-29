@@ -1,0 +1,21 @@
+package br.com.senac.model;
+
+import java.util.List;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
+@SuppressWarnings("serial")
+public class TabelaProduto extends JPanel {
+
+	private JTable tabela;
+	private String[] colunas = { "Codigo", "Nome", "Tipo", "Preço" };
+	private List<Produto> linhas;
+	
+	public TabelaProduto() {
+	
+	ProdutoModelo produtoModelo = new ProdutoModelo(colunas, linhas);
+	
+	}
+
+}

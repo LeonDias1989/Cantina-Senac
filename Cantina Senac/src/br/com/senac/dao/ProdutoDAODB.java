@@ -2,6 +2,8 @@ package br.com.senac.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.senac.dao.dao_interfaces.ProdutoDAO;
 import br.com.senac.lib.DataBase;
@@ -33,9 +35,22 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 	}
 
 	@Override
-	public int remover(Produto produto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int remover(int codigo) {
+
+		int rowsAffect = 0;
+
+		try {
+			iniciarConexão("delete from produto where codigo = ?");
+
+			preparedStatement.setInt(1, codigo);
+
+			rowsAffect = preparedStatement.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rowsAffect;
 	}
 
 	@Override
@@ -68,6 +83,58 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 			e.printStackTrace();
 		}
 		return produto;
+	}
+
+	@Override
+	public List<Produto> getAllProdutos() {
+
+		List<Produto> produtos = new ArrayList<Produto>();
+		ResultSet resultSet;
+
+		try {
+			iniciarConexão("select * from Produto");
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				produtos.add(new Produto(resultSet.getInt("codigo"), resultSet
+						.getString("nome"), resultSet.getString("tipo"),
+						resultSet.getDouble("preco")));
+
+			}
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return produtos;
+	}
+
+	public List<Produto> getAllProdutosSemCodigo() {
+
+		List<Produto> produtos = new ArrayList<Produto>();
+		ResultSet resultSet;
+
+		try {
+			iniciarConexão("select * from Produto");
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				produtos.add(new Produto(resultSet.getString("nome"), resultSet
+						.getString("tipo"), resultSet.getDouble("preco")));
+
+			}
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return produtos;
 	}
 
 }

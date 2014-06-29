@@ -1,0 +1,10 @@
+package br.com.senac.model;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
+public class TabelaProduto extends JPanel {
+
+	private JTable tabela;
+
+}

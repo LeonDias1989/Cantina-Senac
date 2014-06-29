@@ -1,0 +1,55 @@
+package br.com.senac.view;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import br.com.senac.model.TabelaProduto;
+import br.com.senac.view.TelaCadastrarProduto.ButtonOkController;
+
+@SuppressWarnings("serial")
+public class TabelProdutoViewTest extends JFrame implements ActionListener {
+
+	private TabelaProduto tabelaProduto;
+	private JButton buttonAdd, ButtonRemove;
+	private JPanel panelButtons;
+
+	public TabelProdutoViewTest() {
+		super("Janela de Demonstração");
+
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		tabelaProduto = new TabelaProduto();
+
+		getContentPane().add(tabelaProduto, BorderLayout.CENTER);
+
+		panelButtons = new JPanel(new FlowLayout());
+
+		buttonAdd = new JButton("Adicionar");
+		buttonAdd.addActionListener(this);
+		ButtonRemove = new JButton("Remover");
+		ButtonRemove.addActionListener(this);
+
+		panelButtons.add(buttonAdd);
+		panelButtons.add(ButtonRemove);
+
+		getContentPane().add(panelButtons, BorderLayout.SOUTH);
+
+		setResizable(false);
+		pack();
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == buttonAdd) {
+			
+		}
+	}
+
+}

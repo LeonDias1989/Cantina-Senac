@@ -1,0 +1,36 @@
+package br.com.senac.model;
+
+import java.awt.Dimension;
+import java.util.List;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import br.com.senac.dao.ProdutoDAODB;
+
+@SuppressWarnings("serial")
+public class TabelaProduto extends JPanel {
+
+	private JTable tabela;
+	private String[] colunas = { "Codigo", "Nome", "Tipo", "Preço" };
+	private List<Produto> linhas;
+	private ProdutoDAODB produtoDAODB;
+
+	public TabelaProduto() {
+
+		linhas = produtoDAODB.getAllProdutos();
+
+		ProdutoModelo produtoModelo = new ProdutoModelo(colunas, linhas);
+
+		tabela = new JTable(produtoModelo);
+
+		tabela.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		tabela.setFillsViewportHeight(true);
+
+		JScrollPane scrollPane = new JScrollPane(tabela);
+
+		add(scrollPane);
+	}
+
+}

@@ -1,13 +1,19 @@
 package br.com.senac.view;
 
 import javax.swing.JFrame;
+
 import java.awt.Color;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +21,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
-public class TelaPrincipalFuncionario extends JFrame {
+public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 	private JMenu menuArquivo;
 	private JMenuItem menuItemSair;
 	private JLabel lblCdigoDoFuncionrio;
@@ -26,6 +32,10 @@ public class TelaPrincipalFuncionario extends JFrame {
 	private JLabel lblCreditarSaldo;
 	private JLabel lblRealizarVenda;
 	private JPanel panel;
+	private JButton buttonCadastrarProduto;
+	private JButton ButtonCreditarSaldo;
+	private JButton buttonVenda;
+	private JButton buttonRelatorios;
 
 	public JTextField getTextFieldCodigoFuncionario() {
 		return textFieldCodigoFuncionario;
@@ -83,12 +93,13 @@ public class TelaPrincipalFuncionario extends JFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(new Color(0, 0, 204));
-		btnNewButton.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
-				.getResource("/Images/fruitIcon.png")));
-		btnNewButton.setBounds(10, 52, 89, 76);
-		panel.add(btnNewButton);
+		buttonCadastrarProduto = new JButton("");
+		buttonCadastrarProduto.setBackground(new Color(0, 0, 204));
+		buttonCadastrarProduto.setIcon(new ImageIcon(
+				TelaPrincipalFuncionario.class
+						.getResource("/Images/fruitIcon.png")));
+		buttonCadastrarProduto.setBounds(10, 52, 89, 76);
+		panel.add(buttonCadastrarProduto);
 
 		JLabel lblCadastrat = new JLabel("Novo Produto");
 		lblCadastrat.setForeground(Color.WHITE);
@@ -100,31 +111,32 @@ public class TelaPrincipalFuncionario extends JFrame {
 		lblCreditarSaldo.setBounds(10, 138, 108, 14);
 		panel.add(lblCreditarSaldo);
 
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(new Color(0, 0, 204));
-		btnNewButton_1.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
-				.getResource("/Images/ValueIcon.png")));
-		btnNewButton_1.setBounds(10, 163, 89, 76);
-		panel.add(btnNewButton_1);
+		ButtonCreditarSaldo = new JButton("");
+		ButtonCreditarSaldo.setBackground(new Color(0, 0, 204));
+		ButtonCreditarSaldo.setIcon(new ImageIcon(
+				TelaPrincipalFuncionario.class
+						.getResource("/Images/ValueIcon.png")));
+		ButtonCreditarSaldo.setBounds(10, 163, 89, 76);
+		panel.add(ButtonCreditarSaldo);
 
 		lblRealizarVenda = new JLabel("Venda");
 		lblRealizarVenda.setForeground(Color.WHITE);
 		lblRealizarVenda.setBounds(10, 246, 89, 14);
 		panel.add(lblRealizarVenda);
 
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setBackground(new Color(0, 0, 204));
-		btnNewButton_2.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
+		buttonVenda = new JButton("");
+		buttonVenda.setBackground(new Color(0, 0, 204));
+		buttonVenda.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
 				.getResource("/Images/Venda.png")));
-		btnNewButton_2.setBounds(10, 271, 89, 76);
-		panel.add(btnNewButton_2);
+		buttonVenda.setBounds(10, 271, 89, 76);
+		panel.add(buttonVenda);
 
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setBackground(new Color(0, 0, 204));
-		btnNewButton_3.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
+		buttonRelatorios = new JButton("");
+		buttonRelatorios.setBackground(new Color(0, 0, 204));
+		buttonRelatorios.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
 				.getResource("/Images/relat\u00F3rio.png")));
-		btnNewButton_3.setBounds(10, 388, 89, 79);
-		panel.add(btnNewButton_3);
+		buttonRelatorios.setBounds(10, 388, 89, 79);
+		panel.add(buttonRelatorios);
 
 		JLabel lblRelatrios = new JLabel("Relat\u00F3rios");
 		lblRelatrios.setForeground(Color.WHITE);
@@ -148,5 +160,11 @@ public class TelaPrincipalFuncionario extends JFrame {
 
 		new TelaPrincipalFuncionario();
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
