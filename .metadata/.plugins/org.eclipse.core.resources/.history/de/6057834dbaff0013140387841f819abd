@@ -1,0 +1,67 @@
+package br.com.senac.model;
+
+import java.util.List;
+
+import javax.swing.table.AbstractTableModel;
+
+@SuppressWarnings("serial")
+public class ProdutoModelo extends AbstractTableModel {
+
+	private String cabeçalho[];
+	private List<Produto> produtos;
+
+	public ProdutoModelo(String[] cabeçalho, List<Produto> produtos) {
+		super();
+		this.cabeçalho = cabeçalho;
+		this.produtos = produtos;
+	}
+
+	// =============================
+
+	public String[] getCabeçalho() {
+		return cabeçalho;
+	}
+
+	public void setCabeçalho(String[] cabeçalho) {
+		this.cabeçalho = cabeçalho;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	// =============================
+
+	@Override
+	public int getColumnCount() {
+		return this.cabeçalho.length;
+	}
+
+	@Override
+	public int getRowCount() {
+		return this.produtos.size();
+	}
+
+	@Override
+	public String getColumnName(int column) {
+		return this.cabeçalho[column];
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+
+		if (columnIndex == 0)
+			return produtos.get(rowIndex).getCodigo();
+		else if (columnIndex == 1)
+			return produtos.get(rowIndex).getNome();
+		else if (columnIndex == 2)
+			return produtos.get(rowIndex).getCategoria();
+		else
+			return produtos.get(rowIndex).getPreco();
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;arg0&apos; in &apos;br.com.senac.model.ProdutoModelo.getColumnName(...)&apos; to &apos;column&apos;&#x0D;&#x0A;- Original project: &apos;Cantina Senac&apos;&#x0D;&#x0A;- Original element: &apos;br.com.senac.model.ProdutoModelo.getColumnName(int).arg0&apos;&#x0D;&#x0A;- Renamed element: &apos;arg0&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;arg0&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;br.com.senac.model{ProdutoModelo.java[ProdutoModelo~getColumnName~I@arg0!985!992!989!992!I!0!true" name="column" references="true" stamp="1404065942089" version="1.0"/>
+</session>
