@@ -1,22 +1,17 @@
 package br.com.senac.view;
 
 import javax.swing.JFrame;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import java.awt.Color;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
 import java.awt.SystemColor;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -34,13 +29,11 @@ public class TelaPrincipalCliente extends JFrame {
 	private JTextField textFieldMatricula;
 	private JTextField textFieldEmail;
 	private JLabel lblCreditarSaldo;
-	private JButton buttonVisualizarCompras;
+	private JButton buttonCompras;
 	private JLabel lblVisualizarCompras;
 	private JButton buttonSaldoTotal;
 	private JLabel lblSaldo;
 	private JTextField textFieldSaldo;
-	private JButton buttonCreditarSaldo;
-	private JButton buttonSair;
 
 	public JTextField getTextFieldNomeCliente() {
 		return textFieldNomeCliente;
@@ -82,23 +75,23 @@ public class TelaPrincipalCliente extends JFrame {
 		getContentPane().add(painelOperacoesCliente);
 		painelOperacoesCliente.setLayout(null);
 
-		buttonCreditarSaldo = new JButton("");
-		buttonCreditarSaldo.setBackground(SystemColor.inactiveCaption);
-		buttonCreditarSaldo.setIcon(new ImageIcon(TelaPrincipalCliente.class
+		JButton btnSaldo = new JButton("");
+		btnSaldo.setBackground(SystemColor.inactiveCaption);
+		btnSaldo.setIcon(new ImageIcon(TelaPrincipalCliente.class
 				.getResource("/Images/ValueIcon.png")));
-		buttonCreditarSaldo.setBounds(10, 68, 104, 78);
-		painelOperacoesCliente.add(buttonCreditarSaldo);
+		btnSaldo.setBounds(10, 68, 104, 78);
+		painelOperacoesCliente.add(btnSaldo);
 
 		lblCreditarSaldo = new JLabel("Creditar Saldo");
 		lblCreditarSaldo.setBounds(10, 41, 104, 14);
 		painelOperacoesCliente.add(lblCreditarSaldo);
 
-		buttonVisualizarCompras = new JButton("");
-		buttonVisualizarCompras.setIcon(new ImageIcon(TelaPrincipalCliente.class
+		buttonCompras = new JButton("");
+		buttonCompras.setIcon(new ImageIcon(TelaPrincipalCliente.class
 				.getResource("/Images/compras.jpg")));
-		buttonVisualizarCompras.setBackground(SystemColor.inactiveCaption);
-		buttonVisualizarCompras.setBounds(10, 197, 104, 85);
-		painelOperacoesCliente.add(buttonVisualizarCompras);
+		buttonCompras.setBackground(SystemColor.inactiveCaption);
+		buttonCompras.setBounds(10, 197, 104, 85);
+		painelOperacoesCliente.add(buttonCompras);
 
 		lblVisualizarCompras = new JLabel("Visualizar Compras");
 		lblVisualizarCompras.setBounds(10, 172, 157, 14);
@@ -114,19 +107,12 @@ public class TelaPrincipalCliente extends JFrame {
 		lblVisualizarSaldo.setBounds(10, 303, 104, 14);
 		painelOperacoesCliente.add(lblVisualizarSaldo);
 
-		buttonSair = new JButton("");
-		buttonSair.setBackground(Color.WHITE);
-		buttonSair.setIcon(new ImageIcon(TelaPrincipalCliente.class
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setIcon(new ImageIcon(TelaPrincipalCliente.class
 				.getResource("/Images/Log Out.png")));
-		buttonSair.setBounds(1279, 594, 71, 59);
-		buttonSair.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
-		});
-		getContentPane().add(buttonSair);
+		btnNewButton.setBounds(1279, 594, 71, 59);
+		getContentPane().add(btnNewButton);
 
 	}
 

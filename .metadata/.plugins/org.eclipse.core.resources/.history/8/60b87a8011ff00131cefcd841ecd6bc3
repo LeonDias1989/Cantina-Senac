@@ -1,7 +1,0 @@
-package br.com.senac.view;
-
-import javax.swing.JFrame;
-
-public class TelaPrincipalFuncionario extends JFrame {
-
-}

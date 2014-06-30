@@ -214,10 +214,6 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 			new TelaCadastrarProduto();
 			
 		}
-		else if(e.getSource() == ButtonCreditarSaldo){
-			
-			new TelaCreditarSaldo();
-		}
 
 	}
 }

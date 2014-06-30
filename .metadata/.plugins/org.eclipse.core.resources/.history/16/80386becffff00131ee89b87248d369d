@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 import br.com.senac.dao.ClienteDAODB;
@@ -20,9 +21,12 @@ public class TelaCreditarSaldo extends JFrame {
 
 	private JLabel labelMatricula;
 	private JLabel labelCreditarSaldo;
+	private JLabel labelSenhaDoCliente;
+	private JLabel labelSenha;
 	private JLabel labelValor;
 	private JTextField textFieldMatricula;
 	private JTextField textFieldValor;
+	private JPasswordField passwordField;
 	private JButton buttonCreditar;
 	private JButton buttonCancelar;
 
@@ -66,15 +70,27 @@ public class TelaCreditarSaldo extends JFrame {
 		getContentPane().add(textFieldValor);
 		textFieldValor.setColumns(10);
 
+		labelSenhaDoCliente = new JLabel("Senha do Cliente");
+		labelSenhaDoCliente.setBounds(10, 117, 141, 14);
+		getContentPane().add(labelSenhaDoCliente);
+
+		labelSenha = new JLabel("Senha: ");
+		labelSenha.setBounds(10, 142, 104, 14);
+		getContentPane().add(labelSenha);
+
+		passwordField = new JPasswordField();
+		passwordField.setBounds(77, 142, 117, 20);
+		getContentPane().add(passwordField);
+
 		buttonCreditar = new JButton("Creditar");
-		buttonCreditar.setBounds(10, 158, 89, 23);
+		buttonCreditar.setBounds(10, 183, 89, 23);
 
 		buttonCreditar.addActionListener(new ButtonCreditarController());
 
 		getContentPane().add(buttonCreditar);
 
 		buttonCancelar = new JButton("Cancelar");
-		buttonCancelar.setBounds(106, 158, 89, 23);
+		buttonCancelar.setBounds(107, 183, 89, 23);
 		buttonCancelar.addActionListener(new ButtonCancelarController());
 		getContentPane().add(buttonCancelar);
 

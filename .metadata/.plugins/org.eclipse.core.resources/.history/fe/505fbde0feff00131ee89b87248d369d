@@ -137,8 +137,8 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			ItemVendaDAODB itemVendaDAO = new ItemVendaDAODB();
 
 			// Cria um item de venda
-			itemVendaDAO.cadastrarIdemVenda(venda.getCodigoVenda(),
-					codigoDoProduto);
+			itemVendaDAO.cadastrarIdemVenda(
+					venda.getCodigoVenda(), codigoDoProduto);
 
 			// cria-se uma lista com as id´s dos produtos
 			List<Integer> listaInteiros = new ArrayList<>();
@@ -165,11 +165,6 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			for (Produto produto : listaProdutos) {
 				valorTotal += produto.getPreco();
 			}
-			
-			JOptionPane.showMessageDialog(null,
-					"Produto " + produtoDAODB.getProduto(codigoDoProduto)
-							+ " adicionado ao carrinho");
-			
 		} else if (e.getSource() == buttonFinalizarVenda) {
 
 			int opcao = JOptionPane.showConfirmDialog(null,
@@ -185,22 +180,19 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 							cliente.getMatricula());
 					JOptionPane.showMessageDialog(null,
 							"Venda Realizada com sucesso");
-					dispose();
-					
 				} else {
 					ItemVendaDAODB itemVenda = new ItemVendaDAODB();
 					itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
-
+					
 					VendaDAODB vendaDAO = new VendaDAODB();
-
+					
 					vendaDAO.estornarVenda(venda.getCodigoVenda());
 					JOptionPane
 							.showMessageDialog(
 									null,
-									"Cliente sem saldo\n"
-											+ "Consulte o saldo total para efetuar uma venda depois",
+									"Cliente sem saldo para realizar as compras\n"
+											+ "Consulte o saldo total do cliente para comprar depois",
 									"ERRO", JOptionPane.ERROR_MESSAGE);
-					dispose();
 
 				}
 

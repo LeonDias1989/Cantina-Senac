@@ -165,11 +165,9 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			for (Produto produto : listaProdutos) {
 				valorTotal += produto.getPreco();
 			}
-			
 			JOptionPane.showMessageDialog(null,
 					"Produto " + produtoDAODB.getProduto(codigoDoProduto)
 							+ " adicionado ao carrinho");
-			
 		} else if (e.getSource() == buttonFinalizarVenda) {
 
 			int opcao = JOptionPane.showConfirmDialog(null,

@@ -126,7 +126,6 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 				TelaPrincipalFuncionario.class
 						.getResource("/Images/ValueIcon.png")));
 		ButtonCreditarSaldo.setBounds(10, 163, 89, 76);
-		ButtonCreditarSaldo.addActionListener(this);
 		panel.add(ButtonCreditarSaldo);
 
 		lblRealizarVenda = new JLabel("Venda");
@@ -213,10 +212,6 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 			
 			new TelaCadastrarProduto();
 			
-		}
-		else if(e.getSource() == ButtonCreditarSaldo){
-			
-			new TelaCreditarSaldo();
 		}
 
 	}
