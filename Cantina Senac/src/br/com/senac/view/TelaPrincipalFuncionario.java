@@ -13,12 +13,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.util.Date;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
+import br.com.senac.dao.ClienteDAODB;
+import br.com.senac.dao.VendaDAODB;
+import br.com.senac.model.Cliente;
+import br.com.senac.model.Venda;
 
 @SuppressWarnings("serial")
 public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
@@ -50,7 +57,7 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 
 		iniciarComponente();
 
-		setSize(1366, 750);
+		setSize(1366, 720);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -129,6 +136,8 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 		buttonVenda.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
 				.getResource("/Images/Venda.png")));
 		buttonVenda.setBounds(10, 271, 89, 76);
+
+		buttonVenda.addActionListener(this);
 		panel.add(buttonVenda);
 
 		buttonRelatorios = new JButton("");
@@ -164,7 +173,39 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+
+		if (e.getSource() == buttonVenda) {
+
+			String matriculaDigitada = JOptionPane
+					.showInputDialog("Digite a matrícula do cliente");
+
+			ClienteDAODB clienteDAO = new ClienteDAODB();
+
+			/** Obtem-se o valor do cliente e seus respectivos dados */
+			Cliente cliente = clienteDAO.getCliente(matriculaDigitada);
+
+			if (cliente.getMatricula() == null) {
+
+				JOptionPane.showMessageDialog(null, "Matrícula não encontrada",
+						"ERRO", JOptionPane.ERROR_MESSAGE);
+			} else {
+
+				/** Registra a venda no banco de dados */
+				VendaDAODB vendaDAO = new VendaDAODB();
+
+				Date dataJava = new Date();
+				java.sql.Date dataSQL = new java.sql.Date(dataJava.getTime());
+
+				Venda venda = vendaDAO.cadastrarVenda(cliente.getMatricula(),
+						textFieldCodigoFuncionario.getText(), dataSQL);
+				
+				/** Inicia-se o algoritmos de venda de produto */
+				@SuppressWarnings("unused")
+				TelaVendaProduto telaVendaProduto = new TelaVendaProduto(
+						cliente, venda);
+
+			}
+		}
+
 	}
 }

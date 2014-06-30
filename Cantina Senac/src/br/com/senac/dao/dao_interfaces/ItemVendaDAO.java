@@ -8,7 +8,7 @@ public interface ItemVendaDAO {
 
 	ItemVenda cadastrarIdemVenda(int idVendaFK, int idprodutoFK);
 
-	List<Integer> getProdutoDoCarrinho(int codigoVenda);
+	List<Integer> getIdProdutoDoCarrinho(int codigoVenda);
 
 	void estornarItensDeVenda(int idVendaFK);
 

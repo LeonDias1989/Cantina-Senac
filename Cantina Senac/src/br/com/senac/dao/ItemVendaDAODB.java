@@ -35,7 +35,7 @@ public class ItemVendaDAODB extends DataBase implements ItemVendaDAO {
 	}
 
 	@Override
-	public List<Integer> getProdutoDoCarrinho(int codigoVenda) {
+	public List<Integer> getIdProdutoDoCarrinho(int codigoVenda) {
 
 		List<Integer> listaIdProdutos = new ArrayList<Integer>();
 		ResultSet resultSet;

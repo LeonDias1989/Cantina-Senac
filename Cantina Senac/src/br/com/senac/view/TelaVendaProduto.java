@@ -10,10 +10,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import br.com.senac.dao.ClienteDAODB;
+import br.com.senac.dao.ItemVendaDAODB;
+import br.com.senac.dao.ProdutoDAODB;
+import br.com.senac.dao.VendaDAODB;
+import br.com.senac.model.Cliente;
 import br.com.senac.model.Produto;
 import br.com.senac.model.TabelaProduto;
+import br.com.senac.model.Venda;
+
 import javax.swing.ImageIcon;
+
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class TelaVendaProduto extends JFrame implements ActionListener {
@@ -23,8 +33,16 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 	private JPanel panelButtons;
 	private JButton buttonSair;
 
-	public TelaVendaProduto() {
+	private Cliente cliente;
+	private Venda venda;
+	private JButton buttonFinalizarVenda;
+	private double valorTotal;
+
+	public TelaVendaProduto(Cliente cliente, Venda venda) {
 		super("Venda de Produtos");
+
+		this.cliente = cliente;
+		this.venda = venda;
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -37,7 +55,8 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 		buttonAdd = new JButton("");
 		buttonAdd.setBackground(Color.WHITE);
 		buttonAdd.setToolTipText("cadastrar novo produto");
-		buttonAdd.setIcon(new ImageIcon(TelaVendaProduto.class.getResource("/Images/fruitIcon - C\u00F3pia.png")));
+		buttonAdd.setIcon(new ImageIcon(TelaVendaProduto.class
+				.getResource("/Images/fruitIcon - C\u00F3pia.png")));
 		buttonAdd.addActionListener(this);
 
 		buttonRemove = new JButton("Remover");
@@ -47,11 +66,20 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 		buttonAddKart = new JButton("");
 		buttonAddKart.setBackground(Color.WHITE);
 		buttonAddKart.setToolTipText("Adicionar ao carrinho");
-		buttonAddKart.setIcon(new ImageIcon(TelaVendaProduto.class.getResource("/Images/addKartIcon.png")));
+		buttonAddKart.setIcon(new ImageIcon(TelaVendaProduto.class
+				.getResource("/Images/addKartIcon.png")));
 		buttonAddKart.addActionListener(this);
 
 		panelButtons.add(buttonAdd);
 		panelButtons.add(buttonAddKart);
+
+		buttonFinalizarVenda = new JButton("");
+		buttonFinalizarVenda.setToolTipText("Finalizar Venda");
+		buttonFinalizarVenda.setBackground(Color.WHITE);
+		buttonFinalizarVenda.setIcon(new ImageIcon(TelaVendaProduto.class
+				.getResource("/Images/IconFinalizarVenda.png")));
+		buttonFinalizarVenda.addActionListener(this);
+		panelButtons.add(buttonFinalizarVenda);
 		panelButtons.add(buttonRemove);
 
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
@@ -59,7 +87,8 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 		buttonSair = new JButton("");
 		buttonSair.setBackground(Color.WHITE);
 		buttonSair.setToolTipText("sair da tela de vendas");
-		buttonSair.setIcon(new ImageIcon(TelaVendaProduto.class.getResource("/Images/exitIcon.png")));
+		buttonSair.setIcon(new ImageIcon(TelaVendaProduto.class
+				.getResource("/Images/exitIcon.png")));
 		buttonSair.addActionListener(new ActionListener() {
 
 			@Override
@@ -88,7 +117,7 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 						.showInputDialog("Preço: "));
 				tabelaProduto.addProduto(new Produto(nome, categoria, preco));
 				dispose();
-				new TelaVendaProduto();
+				new TelaVendaProduto(cliente, venda);
 
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null,
@@ -101,12 +130,75 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			tabelaProduto.removerProduto();
 		} else if (e.getSource() == buttonAddKart) {
 
-			tabelaProduto.addAoCarrinho();
-		}
-	}
+			// Pega o código do produto selecionado
+			int codigoDoProduto = tabelaProduto.addAoCarrinho();
 
-	public static void main(String[] args) {
-		new TelaVendaProduto();
+			// Cria o item de venda conexão
+			ItemVendaDAODB itemVendaDAO = new ItemVendaDAODB();
+
+			// Cria um item de venda
+			itemVendaDAO.cadastrarIdemVenda(
+					venda.getCodigoVenda(), codigoDoProduto);
+
+			// cria-se uma lista com as id´s dos produtos
+			List<Integer> listaInteiros = new ArrayList<>();
+
+			// Obtem=se estes valores e adiciona-se à lista
+			listaInteiros = itemVendaDAO.getIdProdutoDoCarrinho(venda
+					.getCodigoVenda());
+
+			// Cria-se uma lista de produtos (carrinho)
+			List<Produto> listaProdutos = new ArrayList<>();
+
+			// Cria-se um item conexão de produto
+			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+
+			// Adiciona o produto à lista
+			for (Integer integer : listaInteiros) {
+
+				listaProdutos.add(produtoDAODB.getProduto(integer));
+
+			}
+
+			// Obtem-se o valor total da venda
+			valorTotal = 0;
+			for (Produto produto : listaProdutos) {
+				valorTotal += produto.getPreco();
+			}
+		} else if (e.getSource() == buttonFinalizarVenda) {
+
+			int opcao = JOptionPane.showConfirmDialog(null,
+					"Deseja encerrar a venda ?");
+
+			if (opcao == 0) {
+
+				if (cliente.getSaldo() >= valorTotal) {
+
+					ClienteDAODB clienteDataBase = new ClienteDAODB();
+
+					clienteDataBase.debitarSaldo(valorTotal,
+							cliente.getMatricula());
+					JOptionPane.showMessageDialog(null,
+							"Venda Realizada com sucesso");
+				} else {
+					ItemVendaDAODB itemVenda = new ItemVendaDAODB();
+					itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
+					
+					VendaDAODB vendaDAO = new VendaDAODB();
+					
+					vendaDAO.estornarVenda(venda.getCodigoVenda());
+					JOptionPane
+							.showMessageDialog(
+									null,
+									"Cliente sem saldo para realizar as compras\n"
+											+ "Consulte o saldo total do cliente para comprar depois",
+									"ERRO", JOptionPane.ERROR_MESSAGE);
+
+				}
+
+			}
+
+		}
 	}
 
 }

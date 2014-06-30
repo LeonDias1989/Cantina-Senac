@@ -57,6 +57,18 @@ public class ClienteDAODB extends DataBase implements ClienteDAO {
 
 		return rowsAffect;
 	}
+	
+	public static void main(String[] args) {
+		ClienteDAODB clienteDAODB = new ClienteDAODB();
+		
+	Cliente cliente = clienteDAODB.getCliente("63");
+	
+		if (cliente.getMatricula() == null) {
+			System.out.println("Cliente não cadastrado");
+		}
+		else 
+			System.out.println(cliente.toString());
+	}
 
 	@Override
 	public int atualizar(Cliente cliente) {
