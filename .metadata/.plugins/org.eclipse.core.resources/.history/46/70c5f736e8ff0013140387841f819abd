@@ -1,0 +1,11 @@
+package br.com.senac.dao;
+
+import java.util.Date;
+
+import br.com.senac.model.Venda;
+
+public interface VendaDAO {
+	
+	Venda cadastrarVenda(String matriculaCliente, String codigoFuncionario, Date dataVenda);
+
+}

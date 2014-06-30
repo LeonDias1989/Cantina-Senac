@@ -1,0 +1,44 @@
+package br.com.senac.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import br.com.senac.dao.dao_interfaces.ItemVendaDAO;
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.ItemVenda;
+import br.com.senac.model.Produto;
+
+public class ItemVendaDAODB extends DataBase implements ItemVendaDAO {
+
+	@Override
+	public ItemVenda cadastrarIdemVenda(int idVendaFK, int idprodutoFK) {
+		 
+		ItemVenda itemVenda;
+		try {
+			iniciarConexão("insert into itemDeVenda values (?, ?)");
+			
+			preparedStatement.setInt(1, idVendaFK);
+			preparedStatement.setInt(2, idprodutoFK);
+			
+			preparedStatement.executeUpdate();
+			
+			itemVenda = new ItemVenda(idVendaFK, idprodutoFK);
+			
+			fecharConexao();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Produto> getProdutoCarrinho() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

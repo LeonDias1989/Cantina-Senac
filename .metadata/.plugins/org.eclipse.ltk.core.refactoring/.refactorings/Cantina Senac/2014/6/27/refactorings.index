@@ -2,3 +2,11 @@
 1404066760644	Rename field 'produtos'
 1404072205321	Rename type 'TabelProdutoViewTest'
 1404072361465	Rename field 'ButtonRemove'
+1404077480212	Delete element
+1404077487856	Delete element
+1404077498464	Delete elements
+1404077515218	Delete elements
+1404077533182	Rename local variable 'o'
+1404079521024	Rename method 'getProdutoCarrinho'
+1404086070771	Rename type 'ConnecitonFactory'
+1404088307926	Rename local variable 'codigoVenda'

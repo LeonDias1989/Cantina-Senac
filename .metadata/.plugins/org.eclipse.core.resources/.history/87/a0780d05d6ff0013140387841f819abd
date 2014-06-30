@@ -1,0 +1,14 @@
+package br.com.senac.dao.dao_interfaces;
+
+import java.util.List;
+
+import br.com.senac.model.ItemVenda;
+import br.com.senac.model.Produto;
+
+public interface ItemVendaDAO {
+	
+	ItemVenda cadastrarIdemVenda(int idVendaFK, int idprodutoFK);
+	List<Produto> getProdutoCarrinho();
+	
+
+}

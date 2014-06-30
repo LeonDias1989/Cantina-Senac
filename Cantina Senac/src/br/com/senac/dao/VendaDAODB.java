@@ -1,41 +1,113 @@
 package br.com.senac.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.senac.dao.dao_interfaces.VendaDAO;
+import br.com.senac.lib.ConnectionFactory;
 import br.com.senac.lib.DataBase;
-import br.com.senac.model.Produto;
+import br.com.senac.model.Venda;
 
 public class VendaDAODB extends DataBase implements VendaDAO {
 
+	/** Insere e retorna um objeto venda com todos os dados já inseridos */
 	@Override
-	public int venderProduto(int codigoProduto, String codigoFuncionario,
-			String matriculaCliente) {
+	public Venda cadastrarVenda(String matriculaCliente,
+			String codigoFuncionario, java.sql.Date dataVenda) {
 
-		int rowsAffect = 0;
+		Venda venda = new Venda(matriculaCliente, codigoFuncionario, dataVenda);
+		ResultSet resultSet;
+
+		Connection connection2;
+		PreparedStatement preparedStatement2;
 
 		try {
-			iniciarConexão("insert into venda (produtoFK, funcionarioFK, clienteFK) values (?, ?, ?)");
 
-			preparedStatement.setInt(1, codigoProduto);
+			iniciarConexão("insert into venda(clienteFK, funcionarioFK, dataVenda) values (?, ?, ?)");
+
+			preparedStatement.setString(1, matriculaCliente);
 			preparedStatement.setString(2, codigoFuncionario);
-			preparedStatement.setString(3, matriculaCliente);
+			preparedStatement.setDate(3, (java.sql.Date) dataVenda);
 
-			ClienteDAODB clienteDAODB = new ClienteDAODB();
+			preparedStatement.executeUpdate();
 
-			ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+			fecharConexao();
 
-			Produto produto = produtoDAODB.getProduto(codigoProduto);
+			// ========================
+			connection2 = ConnectionFactory.getConnection();
 
-			clienteDAODB.debitarSaldo(produto.getPreco(), matriculaCliente);
+			preparedStatement2 = connection2
+					.prepareStatement("select id_venda from venda where clienteFK = ?");
 
-			rowsAffect = preparedStatement.executeUpdate();
+			preparedStatement2.setString(1, matriculaCliente);
+
+			resultSet = preparedStatement2.executeQuery();
+
+			while (resultSet.next()) {
+
+				venda.setCodigoVenda(resultSet.getInt("id_venda"));
+			}
+
+			connection2.close();
+			preparedStatement2.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return rowsAffect;
+
+		return venda;
 	}
+
+	@Override
+	public void estornarVenda(int id_venda_FK) {
+
+		try {
+			iniciarConexão("delete from venda where id_venda = ?");
+
+			preparedStatement.setInt(1, id_venda_FK);
+			preparedStatement.executeUpdate();
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void main(String[] args) {
+		VendaDAODB vendaDAODB = new VendaDAODB();
+		
+		vendaDAODB.estornarVenda(9);
+		
+		
+	}
+
+	// public static void main(String[] args) {
+	//
+	// Date date = new Date();
+	//
+	// java.sql.Date dateSQL = new java.sql.Date(date.getTime());
+	//
+	// VendaDAODB vendaDAODB = new VendaDAODB();
+	//
+	// Venda venda = vendaDAODB.cadastrarVenda("631120051", "2", dateSQL);
+	//
+	// System.out.println(venda.getCodigoVenda());
+	//
+	// }
+
+	// public static void main(String[] args) {
+	// VendaDAODB vendaDAODB = new VendaDAODB();
+	//
+	// Date dataAtual = new Date();
+	//
+	// java.sql.Date dataSQL = new java.sql.Date(dataAtual.getTime());
+	//
+	// vendaDAODB.cadastrarVenda("631120051", "2", dataSQL);
+	// }
 
 }

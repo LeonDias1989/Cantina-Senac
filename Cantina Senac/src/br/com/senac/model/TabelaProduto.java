@@ -19,12 +19,13 @@ public class TabelaProduto extends JPanel {
 
 	private List<Produto> linhas;
 	private ProdutoDAODB produtoDAODB = new ProdutoDAODB();
+	private ProdutoModelo produtoModelo;
 
 	public TabelaProduto() {
 
 		linhas = produtoDAODB.getAllProdutos();
 
-		ProdutoModelo produtoModelo = new ProdutoModelo(colunas, linhas);
+		produtoModelo = new ProdutoModelo(colunas, linhas);
 
 		tabela = new JTable(produtoModelo);
 
@@ -75,6 +76,16 @@ public class TabelaProduto extends JPanel {
 
 			removerProduto(linha);
 		}
+
+	}
+
+	public int addAoCarrinho() {
+
+		int rowIndex = getTabela().getSelectedRow();
+
+		Object object = produtoModelo.getValueAt(rowIndex, 0);
+		int codigoProduto = (Integer) object;
+		return codigoProduto;
 
 	}
 

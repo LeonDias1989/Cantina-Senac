@@ -1,0 +1,33 @@
+package br.com.senac.model;
+
+public class Venda {
+
+	private int codigoVenda;
+	private String matriculaClienteFK;
+	private String codigoFuncionarioFK;
+
+	public int getCodigoVenda() {
+		return codigoVenda;
+	}
+
+	public void setCodigoVenda(int codigoVenda) {
+		this.codigoVenda = codigoVenda;
+	}
+
+	public String getMatriculaClienteFK() {
+		return matriculaClienteFK;
+	}
+
+	public void setMatriculaClienteFK(String matriculaClienteFK) {
+		this.matriculaClienteFK = matriculaClienteFK;
+	}
+
+	public String getCodigoFuncionarioFK() {
+		return codigoFuncionarioFK;
+	}
+
+	public void setCodigoFuncionarioFK(String codigoFuncionarioFK) {
+		this.codigoFuncionarioFK = codigoFuncionarioFK;
+	}
+
+}

@@ -1,0 +1,74 @@
+package br.com.senac.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.senac.dao.dao_interfaces.ItemVendaDAO;
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.ItemVenda;
+
+public class ItemVendaDAODB extends DataBase implements ItemVendaDAO {
+
+	@Override
+	public ItemVenda cadastrarIdemVenda(int idVendaFK, int idprodutoFK) {
+
+		ItemVenda itemVenda = null;
+		try {
+			iniciarConexão("insert into itemDeVenda values (?, ?)");
+
+			preparedStatement.setInt(1, idVendaFK);
+			preparedStatement.setInt(2, idprodutoFK);
+
+			preparedStatement.executeUpdate();
+
+			itemVenda = new ItemVenda(idVendaFK, idprodutoFK);
+
+			fecharConexao();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return itemVenda;
+	}
+	
+	public static void main(String[] args) {
+		
+		ItemVendaDAODB itemVendaDAODB = new ItemVendaDAODB();
+		
+		ItemVenda itemVenda = itemVendaDAODB.cadastrarIdemVenda(9, 2);
+		
+		System.out.println(itemVenda.toString());
+		
+		
+	}
+
+	@Override
+	public List<Integer> getProdutoDoCarrinho(int codigoVenda) {
+
+		List<Integer> listaIdProdutos = new ArrayList<Integer>();
+		ResultSet resultSet;
+
+		try {
+			iniciarConexão("select id_produto_FK from itemDeVenda where idVenda = ?");
+
+			preparedStatement.setInt(1, codigoVenda);
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				listaIdProdutos.add(resultSet.getInt("idVenda_FK"));
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return listaIdProdutos;
+	}
+
+}

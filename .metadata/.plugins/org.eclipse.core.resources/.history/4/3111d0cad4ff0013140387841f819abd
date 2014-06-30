@@ -1,0 +1,61 @@
+package br.com.senac.model;
+
+import java.sql.Date;
+
+public class Venda {
+
+	private int codigoVenda;
+	private String codigoFuncionarioFK;
+	private String codigoClienteFK;
+	private Date dataDaVenda;
+
+	public Venda(int codigoVenda, String codigoFuncionarioFK,
+			String codigoClienteFK) {
+		super();
+		this.codigoVenda = codigoVenda;
+		this.codigoFuncionarioFK = codigoFuncionarioFK;
+		this.codigoClienteFK = codigoClienteFK;
+	}
+
+	public Venda(int codigoVenda, String codigoFuncionarioFK,
+			String codigoClienteFK, Date dataDaVenda) {
+		super();
+		this.codigoVenda = codigoVenda;
+		this.codigoFuncionarioFK = codigoFuncionarioFK;
+		this.codigoClienteFK = codigoClienteFK;
+		this.dataDaVenda = dataDaVenda;
+	}
+
+	public int getCodigoVenda() {
+		return codigoVenda;
+	}
+
+	public void setCodigoVenda(int codigoVenda) {
+		this.codigoVenda = codigoVenda;
+	}
+
+	public String getCodigoFuncionarioFK() {
+		return codigoFuncionarioFK;
+	}
+
+	public void setCodigoFuncionarioFK(String codigoFuncionarioFK) {
+		this.codigoFuncionarioFK = codigoFuncionarioFK;
+	}
+
+	public String getCodigoClienteFK() {
+		return codigoClienteFK;
+	}
+
+	public void setCodigoClienteFK(String codigoClienteFK) {
+		this.codigoClienteFK = codigoClienteFK;
+	}
+
+	public Date getDataDaVenda() {
+		return dataDaVenda;
+	}
+
+	public void setDataDaVenda(Date dataDaVenda) {
+		this.dataDaVenda = dataDaVenda;
+	}
+
+}

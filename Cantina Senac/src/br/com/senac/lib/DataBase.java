@@ -11,7 +11,7 @@ public class DataBase {
 	
 	public void iniciarConexão(String comandoSQL) throws ClassNotFoundException, SQLException{
 		
-		connection = ConnecitonFactory.getConnection();
+		connection = ConnectionFactory.getConnection();
 		preparedStatement = connection.prepareStatement(comandoSQL);
 		
 	}

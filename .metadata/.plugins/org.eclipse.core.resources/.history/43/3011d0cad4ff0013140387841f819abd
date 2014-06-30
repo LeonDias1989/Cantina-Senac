@@ -1,0 +1,40 @@
+package br.com.senac.model;
+
+public class ItemDeVenda {
+
+	private int idVenda;
+	private String codigoVendaFK;
+	private String codigoProdutoFK;
+
+	public ItemDeVenda(int idVenda, String codigoVendaFK, String codigoProdutoFK) {
+		super();
+		this.idVenda = idVenda;
+		this.codigoVendaFK = codigoVendaFK;
+		this.codigoProdutoFK = codigoProdutoFK;
+	}
+
+	public int getIdVenda() {
+		return idVenda;
+	}
+
+	public void setIdVenda(int idVenda) {
+		this.idVenda = idVenda;
+	}
+
+	public String getCodigoVendaFK() {
+		return codigoVendaFK;
+	}
+
+	public void setCodigoVendaFK(String codigoVendaFK) {
+		this.codigoVendaFK = codigoVendaFK;
+	}
+
+	public String getCodigoProdutoFK() {
+		return codigoProdutoFK;
+	}
+
+	public void setCodigoProdutoFK(String codigoProdutoFK) {
+		this.codigoProdutoFK = codigoProdutoFK;
+	}
+
+}

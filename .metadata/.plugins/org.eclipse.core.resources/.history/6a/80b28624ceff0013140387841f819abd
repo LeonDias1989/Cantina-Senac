@@ -1,0 +1,23 @@
+package br.com.senac.dao;
+
+import br.com.senac.dao.dao_interfaces.ItemVendaDAO;
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.ItemDeVenda;
+
+public class ItemVendaDAODB extends DataBase implements ItemVendaDAO{
+
+	@Override
+	public ItemDeVenda cadastrar() {
+		
+		c
+		
+		return null;
+	}
+
+	@Override
+	public ItemDeVenda cadastrar(int codigoProduto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

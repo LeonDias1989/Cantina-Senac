@@ -1,0 +1,42 @@
+package br.com.senac.dao;
+
+import java.sql.SQLException;
+import java.util.Date;
+
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.Venda;
+
+public class VendaDAODB extends DataBase implements VendaDAO {
+
+	@Override
+	public Venda cadastrarVenda(String matriculaCliente,
+			String codigoFuncionario, java.sql.Date dataVenda) {
+		Venda venda = null;
+
+		try {
+
+			iniciarConexão("insert into venda(clienteFK, funcionarioFK, dataVenda) values (?, ?, ?)");
+
+			preparedStatement.setString(1, matriculaCliente);
+			preparedStatement.setString(2, codigoFuncionario);
+			preparedStatement.setDate(3, (java.sql.Date) dataVenda);
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public static void main(String[] args) {
+		VendaDAODB vendaDAODB = new VendaDAODB();
+		
+		Date dataAtual = new Date();
+		
+		java.sql.Date dataSQL = new java.sql.Date(dataAtual.getTime());
+		
+		vendaDAODB.cadastrarVenda("631120051", "2", dataSQL);
+	}
+
+}

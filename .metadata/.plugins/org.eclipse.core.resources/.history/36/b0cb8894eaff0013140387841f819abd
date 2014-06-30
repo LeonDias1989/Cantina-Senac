@@ -1,0 +1,86 @@
+package br.com.senac.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
+import br.com.senac.lib.ConnectionFactory;
+import br.com.senac.lib.DataBase;
+import br.com.senac.model.Venda;
+
+public class VendaDAODB extends DataBase implements VendaDAO {
+
+	@Override
+	public Venda cadastrarVenda(String matriculaCliente,
+			String codigoFuncionario, java.sql.Date dataVenda) {
+		
+		Venda venda = new Venda(matriculaCliente, codigoFuncionario, dataVenda);
+		ResultSet resultSet;
+
+		Connection connection2;
+		PreparedStatement preparedStatement2;
+
+		try {
+
+			iniciarConexão("insert into venda(clienteFK, funcionarioFK, dataVenda) values (?, ?, ?)");
+
+			preparedStatement.setString(1, matriculaCliente);
+			preparedStatement.setString(2, codigoFuncionario);
+			preparedStatement.setDate(3, (java.sql.Date) dataVenda);
+
+			preparedStatement.executeUpdate();
+
+			fecharConexao();
+
+			
+//			========================
+			connection2 = ConnectionFactory.getConnection();
+			
+			preparedStatement2 = connection2
+					.prepareStatement("select id_venda from venda where clienteFK = ?");
+			
+			preparedStatement2.setString(1, matriculaCliente);
+			
+			resultSet =preparedStatement2.executeQuery();
+			
+		while(resultSet.next()){
+			
+			venda.setCodigoVenda(resultSet.getInt("id_venda"));
+		}
+			
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return venda;
+	}
+	
+	public static void main(String[] args) {
+		
+		Date date = new Date();
+		
+		java.sql.Date dateSQL = new java.sql.Date(date.getTime());
+		
+		VendaDAODB vendaDAODB = new VendaDAODB();
+		
+		Venda venda = vendaDAODB.cadastrarVenda("631120051", "2", dateSQL);
+		
+		System.out.println(venda.toString());
+		
+	}
+
+//	public static void main(String[] args) {
+//		VendaDAODB vendaDAODB = new VendaDAODB();
+//
+//		Date dataAtual = new Date();
+//
+//		java.sql.Date dataSQL = new java.sql.Date(dataAtual.getTime());
+//
+//		vendaDAODB.cadastrarVenda("631120051", "2", dataSQL);
+//	}
+
+}

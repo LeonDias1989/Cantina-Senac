@@ -1,0 +1,21 @@
+Efetuar Vendas:
+
+1- Logar-se como funcionário 
+2- Escolher opção efetuar vendas 
+3- Digitar Matrícula do cliente 
+4- Validar matrícula do cliente (cliente existe na lista, já foi cadastrado)
+	
+	>>se cliente já existe
+	Sistema cadastra uma venda contendo os dados do cliente, funcionário, cria una id para a venda 
+		e registra a data
+		
+		>>Escolher Produto e add ao carrinho 
+		cada adição ao carrinho gera um registro na tabela item de venda
+		
+		5- Finaliza venda 
+		6- Valida se o cliente possui saldo em conta		
+			>>Se o cliente possui saldo: desconta 
+			
+			>> Se não deleta o registro dos itens de venda e da venda 
+			
+4 = fluxo alternativo se não existe manda a mensagem na tela

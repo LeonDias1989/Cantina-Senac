@@ -1,0 +1,9 @@
+package br.com.senac.model;
+
+public class ItemDeVenda {
+
+	private int idVenda;
+	private String codigoVendaFK;
+	private String codigoProdutoFK;
+
+}

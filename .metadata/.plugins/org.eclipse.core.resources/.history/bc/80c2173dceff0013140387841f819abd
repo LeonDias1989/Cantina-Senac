@@ -1,0 +1,10 @@
+package br.com.senac.dao.dao_interfaces;
+
+import br.com.senac.model.ItemDeVenda;
+
+public interface ItemVendaDAO {
+	
+	ItemDeVenda cadastrar();
+	ItemDeVenda cadastrar(int codigoProduto);
+	
+}
