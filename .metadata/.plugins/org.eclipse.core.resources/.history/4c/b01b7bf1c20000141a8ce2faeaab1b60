@@ -79,13 +79,13 @@ public class VendaDAODB extends DataBase implements VendaDAO {
 
 	}
 	
-//	public static void main(String[] args) {
-//		VendaDAODB vendaDAODB = new VendaDAODB();
-//		
-//		vendaDAODB.estornarVenda(9);
-//		
-//		
-//	}
+	public static void main(String[] args) {
+		VendaDAODB vendaDAODB = new VendaDAODB();
+		
+		vendaDAODB.estornarVenda(9);
+		
+		
+	}
 
 	// public static void main(String[] args) {
 	//

@@ -73,7 +73,7 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 
 			while (resultado.next()) {
 				produto.setCategoria(resultado.getString("codigo"));
-				produto.setNome(resultado.getString("nomeproduto"));
+				produto.setNome(resultado.getString("nome"));
 				produto.setPreco(resultado.getDouble("preco"));
 				produto.setCategoria(resultado.getString("tipo"));
 			}
@@ -98,7 +98,7 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 			while (resultSet.next()) {
 
 				produtos.add(new Produto(resultSet.getInt("codigo"), resultSet
-						.getString("nomeproduto"), resultSet.getString("tipo"),
+						.getString("nome"), resultSet.getString("tipo"),
 						resultSet.getDouble("preco")));
 
 			}
@@ -123,7 +123,7 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 
 			while (resultSet.next()) {
 
-				produtos.add(new Produto(resultSet.getString("nomeproduto"), resultSet
+				produtos.add(new Produto(resultSet.getString("nome"), resultSet
 						.getString("tipo"), resultSet.getDouble("preco")));
 
 			}

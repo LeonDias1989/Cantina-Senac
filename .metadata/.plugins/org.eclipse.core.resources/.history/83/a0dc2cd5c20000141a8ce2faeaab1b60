@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.senac.dao.dao_interfaces.VendaDAO;
 import br.com.senac.lib.ConnectionFactory;
 import br.com.senac.lib.DataBase;
 import br.com.senac.model.Venda;
@@ -79,13 +78,13 @@ public class VendaDAODB extends DataBase implements VendaDAO {
 
 	}
 	
-//	public static void main(String[] args) {
-//		VendaDAODB vendaDAODB = new VendaDAODB();
-//		
-//		vendaDAODB.estornarVenda(9);
-//		
-//		
-//	}
+	public static void main(String[] args) {
+		VendaDAODB vendaDAODB = new VendaDAODB();
+		
+		vendaDAODB.estornarVenda(9);
+		
+		
+	}
 
 	// public static void main(String[] args) {
 	//

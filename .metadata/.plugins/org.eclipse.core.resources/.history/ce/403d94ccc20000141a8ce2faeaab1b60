@@ -123,7 +123,7 @@ public class ProdutoDAODB extends DataBase implements ProdutoDAO {
 
 			while (resultSet.next()) {
 
-				produtos.add(new Produto(resultSet.getString("nomeproduto"), resultSet
+				produtos.add(new Produto(resultSet.getString("nome"), resultSet
 						.getString("tipo"), resultSet.getDouble("preco")));
 
 			}
