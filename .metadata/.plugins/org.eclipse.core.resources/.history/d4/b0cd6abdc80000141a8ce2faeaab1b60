@@ -84,7 +84,6 @@ public class TelaVisualizarSaldo extends JFrame {
 
 	class ButtonVisualizarSaldo implements ActionListener {
 
-		@SuppressWarnings("deprecation")
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
@@ -93,20 +92,15 @@ public class TelaVisualizarSaldo extends JFrame {
 			ClienteDAODB clienteDAODB = new ClienteDAODB();
 
 			Cliente cliente = clienteDAODB.getCliente(matricula);
-
+			
 			if (cliente.getSenha().equals(passwordField.getText())) {
-
+		
 				JOptionPane.showMessageDialog(null, "Olá " + cliente.getNome()
-						+ "\n" + "Seu saldo é de " + cliente.getSaldo()
-						+ " reais");
-				dispose();
+						+ "\n" + "Seu saldo é de " + cliente.getSaldo() + " reais");
+			
+				
 			}
-			else {
-
-				JOptionPane.showMessageDialog(null, "Senha Errada", "Erro",
-						JOptionPane.ERROR_MESSAGE);
-				dispose();
-			}
+			JOptionPane.showMessageDialog(null, "Senha Errada", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

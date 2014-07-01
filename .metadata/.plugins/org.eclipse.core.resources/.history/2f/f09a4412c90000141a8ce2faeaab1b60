@@ -101,11 +101,11 @@ public class TelaVisualizarSaldo extends JFrame {
 						+ " reais");
 				dispose();
 			}
-			else {
+			else{
 
 				JOptionPane.showMessageDialog(null, "Senha Errada", "Erro",
 						JOptionPane.ERROR_MESSAGE);
-				dispose();
+				dipose();
 			}
 		}
 	}

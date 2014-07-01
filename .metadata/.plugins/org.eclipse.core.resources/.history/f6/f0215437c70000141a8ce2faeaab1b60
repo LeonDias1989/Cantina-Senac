@@ -22,7 +22,6 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 import br.com.senac.dao.ClienteDAODB;
-import br.com.senac.model.Cliente;
 
 @SuppressWarnings("serial")
 public class TelaPrincipalCliente extends JFrame implements ActionListener {
@@ -60,13 +59,9 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 	public JTextField getTextFielSaldo() {
 		return textFieldSaldo;
 	}
-	
-	
-	private String matricula;
-	public TelaPrincipalCliente(String matricula) {
 
-		this.matricula = matricula;
-		
+	public TelaPrincipalCliente() {
+
 		iniciarMenuBar();
 		iniciarPanelDadosCliente();
 		iniciarPanelCompras();
@@ -116,7 +111,6 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 		buttonSaldoTotal.setIcon(new ImageIcon(TelaPrincipalCliente.class
 				.getResource("/Images/TotalValueIcon.png")));
 		buttonSaldoTotal.setBounds(10, 328, 104, 98);
-		buttonSaldoTotal.addActionListener(this);
 		painelOperacoesCliente.add(buttonSaldoTotal);
 
 		JLabel lblVisualizarSaldo = new JLabel("Visualizar Saldo");
@@ -204,7 +198,10 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 
 	}
 
+	public static void main(String[] args) {
+		new TelaPrincipalCliente();
 
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -213,14 +210,8 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 			new TelaCreditarSaldo();
 			
 			ClienteDAODB clienteDataBase = new ClienteDAODB();
-			Cliente cliente = clienteDataBase.getCliente(matricula);
 			
-			textFieldSaldo.setText(""+cliente.getSaldo());
-			
-		}
-		else if(e.getSource() == buttonSaldoTotal){
-			
-			new TelaVisualizarSaldo();
+			textFieldSaldo.setText(clienteDataBase.getCliente(matricula));
 		}
 		
 	}

@@ -45,7 +45,6 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 
 		this.cliente = cliente;
 		this.venda = venda;
-		valorTotalTextField = new JTextField("" + valorTotal);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -91,29 +90,27 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				estornar();
 				dispose();
 			}
 		});
 		panelButtons.add(buttonSair);
-		panelButtons.add(valorTotalTextField);
-
+		iniciarValorTotalTextField();
 		setResizable(true);
 		setSize(1000, 680);
 		setVisible(true);
 	}
 
-	private void estornar(){
-		
-		ItemVendaDAODB itemVenda = new ItemVendaDAODB();
-		itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
+	private void iniciarValorTotalTextField() {
 
-		VendaDAODB vendaDAO = new VendaDAODB();
+		JPanel panelWEST = new JPanel(null);
 
-		vendaDAO.estornarVenda(venda.getCodigoVenda());
+		valorTotalTextField = new JTextField("" + valorTotal);
+
+		panelWEST.add(valorTotalTextField);
+
+		getContentPane().add(panelWEST, BorderLayout.WEST);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
@@ -177,8 +174,8 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null,
 					"Produto " + produtoDAODB.getProduto(codigoDoProduto)
 							+ " adicionado ao carrinho");
-
-			valorTotalTextField.setText("" + valorTotal);
+			
+			valorTotalTextField.setText(""+valorTotal);
 
 		} else if (e.getSource() == buttonFinalizarVenda) {
 

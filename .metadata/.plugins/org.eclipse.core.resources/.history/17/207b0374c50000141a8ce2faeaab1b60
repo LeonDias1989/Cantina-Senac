@@ -91,29 +91,16 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				estornar();
 				dispose();
 			}
 		});
 		panelButtons.add(buttonSair);
-		panelButtons.add(valorTotalTextField);
-
+		
 		setResizable(true);
 		setSize(1000, 680);
 		setVisible(true);
 	}
 
-	private void estornar(){
-		
-		ItemVendaDAODB itemVenda = new ItemVendaDAODB();
-		itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
-
-		VendaDAODB vendaDAO = new VendaDAODB();
-
-		vendaDAO.estornarVenda(venda.getCodigoVenda());
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {

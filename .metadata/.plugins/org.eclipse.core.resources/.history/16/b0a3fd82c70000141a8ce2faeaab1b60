@@ -104,8 +104,7 @@ public class TelaLogonCliente extends JFrame implements ActionListener {
 			/** Valida se a senha do digitada pertence à matrícula digitada */
 			if (cliente.getSenha().equals(passwordField.getText())) {
 
-				TelaPrincipalCliente telaPrincipalCliente = new TelaPrincipalCliente(
-						textFieldMatricula.getText());
+				TelaPrincipalCliente telaPrincipalCliente = new TelaPrincipalCliente(textFieldMatricula.getText());
 				telaPrincipalCliente.setVisible(true);
 
 				telaPrincipalCliente.getTextFieldEmail().setText(

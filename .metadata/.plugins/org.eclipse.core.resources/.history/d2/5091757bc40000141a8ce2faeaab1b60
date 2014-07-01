@@ -38,14 +38,13 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 	private Venda venda;
 	private JButton buttonFinalizarVenda;
 	private double valorTotal;
-	private JTextField valorTotalTextField;
+	private JTextField valorTotalTexto;
 
 	public TelaVendaProduto(Cliente cliente, Venda venda) {
 		super("Venda de Produtos");
 
 		this.cliente = cliente;
 		this.venda = venda;
-		valorTotalTextField = new JTextField("" + valorTotal);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -91,29 +90,29 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				estornar();
 				dispose();
 			}
 		});
 		panelButtons.add(buttonSair);
-		panelButtons.add(valorTotalTextField);
+		iniciarPainelOeste();
 
 		setResizable(true);
 		setSize(1000, 680);
 		setVisible(true);
 	}
-
-	private void estornar(){
-		
-		ItemVendaDAODB itemVenda = new ItemVendaDAODB();
-		itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
-
-		VendaDAODB vendaDAO = new VendaDAODB();
-
-		vendaDAO.estornarVenda(venda.getCodigoVenda());
-	}
 	
+	private void iniciarPainelOeste(){
+		
+		JPanel panelOeste = new JPanel(new FlowLayout());
+		
+		valorTotalTexto = new JTextField(""+valorTotal);
+		
+		panelOeste.add(valorTotalTexto);
+		
+		getContentPane().add(panelOeste, BorderLayout.WEST);
+		
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
@@ -136,6 +135,9 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 			}
 
+		} else if (e.getSource() == buttonRemove) {
+
+			tabelaProduto.removerProduto();
 		} else if (e.getSource() == buttonAddKart) {
 
 			// Pega o código do produto selecionado
@@ -173,13 +175,11 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			for (Produto produto : listaProdutos) {
 				valorTotal += produto.getPreco();
 			}
-
+			
 			JOptionPane.showMessageDialog(null,
 					"Produto " + produtoDAODB.getProduto(codigoDoProduto)
 							+ " adicionado ao carrinho");
-
-			valorTotalTextField.setText("" + valorTotal);
-
+			
 		} else if (e.getSource() == buttonFinalizarVenda) {
 
 			int opcao = JOptionPane.showConfirmDialog(null,
@@ -196,7 +196,7 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null,
 							"Venda Realizada com sucesso");
 					dispose();
-
+					
 				} else {
 					ItemVendaDAODB itemVenda = new ItemVendaDAODB();
 					itemVenda.estornarItensDeVenda(venda.getCodigoVenda());

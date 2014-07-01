@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import br.com.senac.dao.ClienteDAODB;
 import br.com.senac.dao.ItemVendaDAODB;
@@ -30,7 +29,7 @@ import java.util.List;
 public class TelaVendaProduto extends JFrame implements ActionListener {
 
 	private TabelaProduto tabelaProduto;
-	private JButton buttonAdd, buttonAddKart;
+	private JButton buttonAdd, buttonRemove, buttonAddKart;
 	private JPanel panelButtons;
 	private JButton buttonSair;
 
@@ -38,14 +37,12 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 	private Venda venda;
 	private JButton buttonFinalizarVenda;
 	private double valorTotal;
-	private JTextField valorTotalTextField;
 
 	public TelaVendaProduto(Cliente cliente, Venda venda) {
 		super("Venda de Produtos");
 
 		this.cliente = cliente;
 		this.venda = venda;
-		valorTotalTextField = new JTextField("" + valorTotal);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -61,6 +58,10 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 		buttonAdd.setIcon(new ImageIcon(TelaVendaProduto.class
 				.getResource("/Images/fruitIcon - C\u00F3pia.png")));
 		buttonAdd.addActionListener(this);
+
+		buttonRemove = new JButton("Remover");
+		buttonRemove.addActionListener(this);
+		buttonRemove.setEnabled(false);
 
 		buttonAddKart = new JButton("");
 		buttonAddKart.setBackground(Color.WHITE);
@@ -79,6 +80,7 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 				.getResource("/Images/IconFinalizarVenda.png")));
 		buttonFinalizarVenda.addActionListener(this);
 		panelButtons.add(buttonFinalizarVenda);
+		panelButtons.add(buttonRemove);
 
 		getContentPane().add(panelButtons, BorderLayout.SOUTH);
 
@@ -91,29 +93,16 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				estornar();
 				dispose();
 			}
 		});
 		panelButtons.add(buttonSair);
-		panelButtons.add(valorTotalTextField);
 
 		setResizable(true);
 		setSize(1000, 680);
 		setVisible(true);
 	}
 
-	private void estornar(){
-		
-		ItemVendaDAODB itemVenda = new ItemVendaDAODB();
-		itemVenda.estornarItensDeVenda(venda.getCodigoVenda());
-
-		VendaDAODB vendaDAO = new VendaDAODB();
-
-		vendaDAO.estornarVenda(venda.getCodigoVenda());
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == buttonAdd) {
@@ -136,6 +125,9 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 			}
 
+		} else if (e.getSource() == buttonRemove) {
+
+			tabelaProduto.removerProduto();
 		} else if (e.getSource() == buttonAddKart) {
 
 			// Pega o código do produto selecionado
@@ -173,13 +165,11 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 			for (Produto produto : listaProdutos) {
 				valorTotal += produto.getPreco();
 			}
-
+			
 			JOptionPane.showMessageDialog(null,
 					"Produto " + produtoDAODB.getProduto(codigoDoProduto)
 							+ " adicionado ao carrinho");
-
-			valorTotalTextField.setText("" + valorTotal);
-
+			
 		} else if (e.getSource() == buttonFinalizarVenda) {
 
 			int opcao = JOptionPane.showConfirmDialog(null,
@@ -196,7 +186,7 @@ public class TelaVendaProduto extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null,
 							"Venda Realizada com sucesso");
 					dispose();
-
+					
 				} else {
 					ItemVendaDAODB itemVenda = new ItemVendaDAODB();
 					itemVenda.estornarItensDeVenda(venda.getCodigoVenda());

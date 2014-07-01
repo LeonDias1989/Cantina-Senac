@@ -99,14 +99,10 @@ public class TelaVisualizarSaldo extends JFrame {
 				JOptionPane.showMessageDialog(null, "Olá " + cliente.getNome()
 						+ "\n" + "Seu saldo é de " + cliente.getSaldo()
 						+ " reais");
-				dispose();
-			}
-			else {
 
-				JOptionPane.showMessageDialog(null, "Senha Errada", "Erro",
-						JOptionPane.ERROR_MESSAGE);
-				dispose();
 			}
+			JOptionPane.showMessageDialog(null, "Senha Errada", "Erro",
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

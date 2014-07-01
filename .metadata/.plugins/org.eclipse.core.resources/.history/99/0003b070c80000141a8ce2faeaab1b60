@@ -116,7 +116,6 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 		buttonSaldoTotal.setIcon(new ImageIcon(TelaPrincipalCliente.class
 				.getResource("/Images/TotalValueIcon.png")));
 		buttonSaldoTotal.setBounds(10, 328, 104, 98);
-		buttonSaldoTotal.addActionListener(this);
 		painelOperacoesCliente.add(buttonSaldoTotal);
 
 		JLabel lblVisualizarSaldo = new JLabel("Visualizar Saldo");
@@ -217,10 +216,6 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 			
 			textFieldSaldo.setText(""+cliente.getSaldo());
 			
-		}
-		else if(e.getSource() == buttonSaldoTotal){
-			
-			new TelaVisualizarSaldo();
 		}
 		
 	}
