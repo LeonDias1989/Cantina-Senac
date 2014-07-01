@@ -1,0 +1,24 @@
+package br.com.senac.relatorios;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import br.com.senac.lib.DataBase;
+
+public class RelatorioDAODB extends DataBase {
+
+	public List<RelCliente> getVendasPorCliente(String matricula){
+		
+		try {
+			iniciarConexão("select (select nome from cliente where matricula = clienteFK), datavenda,(select nomeProduto from produto  where codigo = itemdevenda.id_produto_fk) from venda inner join itemdevenda on  venda.id_venda = itemDevenda.idvenda_FK		and venda.clienteFK = '631120051'");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return null;
+	}
+
+}

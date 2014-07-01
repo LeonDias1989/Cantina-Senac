@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import java.awt.event.ActionEvent;
@@ -23,6 +24,8 @@ import javax.swing.ImageIcon;
 
 import br.com.senac.dao.ClienteDAODB;
 import br.com.senac.model.Cliente;
+import br.com.senac.relatorios.RelatorioDAODB;
+import br.com.senac.relatorios.TelaRelatorioCliente;
 
 @SuppressWarnings("serial")
 public class TelaPrincipalCliente extends JFrame implements ActionListener {
@@ -106,6 +109,7 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 				.getResource("/Images/compras.jpg")));
 		buttonVisualizarCompras.setBackground(SystemColor.inactiveCaption);
 		buttonVisualizarCompras.setBounds(10, 197, 104, 85);
+		buttonVisualizarCompras.addActionListener(this);
 		painelOperacoesCliente.add(buttonVisualizarCompras);
 
 		lblVisualizarCompras = new JLabel("Visualizar Compras");
@@ -221,6 +225,17 @@ public class TelaPrincipalCliente extends JFrame implements ActionListener {
 		else if(e.getSource() == buttonSaldoTotal){
 			
 			new TelaVisualizarSaldo();
+		}
+		else if(e.getSource() == buttonVisualizarCompras){
+			
+			RelatorioDAODB relatorio = new RelatorioDAODB();
+			
+			String matricula = JOptionPane.showInputDialog("Confirme a matrícula");
+			
+			
+			
+			new TelaRelatorioCliente(relatorio.getVendasPorCliente(matricula));
+			
 		}
 		
 	}

@@ -1,0 +1,46 @@
+package br.com.senac.relatorios;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class TelaRelatorioCliente extends JFrame {
+
+	private JPanel contentPane;
+	private JScrollPane scrollPane;
+	private JLabel labelRelatorio;
+	private String textoRelatorio;
+	
+	
+	public TelaRelatorioCliente(String textoRelatorio) {
+		
+		this.textoRelatorio = textoRelatorio;
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 687, 462);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		scrollPane = new JScrollPane();
+		contentPane.add(scrollPane, BorderLayout.CENTER);
+		
+		labelRelatorio = new JLabel("");
+		scrollPane.setViewportView(labelRelatorio);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		scrollPane.setRowHeaderView(btnCancelar);
+	}
+
+	public static void main(String[] args) {
+		new TelaRelatorioCliente(new String());
+	}
+
+}

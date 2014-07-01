@@ -26,6 +26,8 @@ import br.com.senac.dao.ClienteDAODB;
 import br.com.senac.dao.VendaDAODB;
 import br.com.senac.model.Cliente;
 import br.com.senac.model.Venda;
+import br.com.senac.relatorios.RelatorioDAODB;
+import br.com.senac.relatorios.TelaRelatorioFuncionario;
 
 @SuppressWarnings("serial")
 public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
@@ -106,7 +108,7 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 				TelaPrincipalFuncionario.class
 						.getResource("/Images/fruitIcon.png")));
 		buttonCadastrarProduto.setBounds(10, 52, 89, 76);
-		
+
 		buttonCadastrarProduto.addActionListener(this);
 		panel.add(buttonCadastrarProduto);
 
@@ -148,9 +150,11 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 		buttonRelatorios.setIcon(new ImageIcon(TelaPrincipalFuncionario.class
 				.getResource("/Images/relat\u00F3rio.png")));
 		buttonRelatorios.setBounds(10, 388, 89, 79);
+
+		buttonRelatorios.addActionListener(this);
 		panel.add(buttonRelatorios);
 
-		JLabel lblRelatrios = new JLabel("Relat\u00F3rios");
+		JLabel lblRelatrios = new JLabel("Relat\u00F3rio");
 		lblRelatrios.setForeground(Color.WHITE);
 		lblRelatrios.setBounds(10, 358, 90, 26);
 		panel.add(lblRelatrios);
@@ -201,22 +205,30 @@ public class TelaPrincipalFuncionario extends JFrame implements ActionListener {
 
 				Venda venda = vendaDAO.cadastrarVenda(cliente.getMatricula(),
 						textFieldCodigoFuncionario.getText(), dataSQL);
-				
+
 				/** Inicia-se o algoritmos de venda de produto */
 				@SuppressWarnings("unused")
 				TelaVendaProduto telaVendaProduto = new TelaVendaProduto(
 						cliente, venda);
 
 			}
-		}
-		else if(e.getSource() == buttonCadastrarProduto){
-			
+		} else if (e.getSource() == buttonCadastrarProduto) {
+
 			new TelaCadastrarProduto();
-			
-		}
-		else if(e.getSource() == ButtonCreditarSaldo){
-			
+
+		} else if (e.getSource() == ButtonCreditarSaldo) {
+
 			new TelaCreditarSaldo();
+		} else if (e.getSource() == buttonRelatorios) {
+
+			RelatorioDAODB rel = new RelatorioDAODB();
+
+			String codigo = JOptionPane
+					.showInputDialog("Confirme o código do funcionário");
+
+			String cod = rel.getVendasPorFuncionario(codigo);
+			
+			new TelaRelatorioFuncionario(cod);
 		}
 
 	}
