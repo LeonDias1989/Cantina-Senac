@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.ObjectInputStream.GetField"/>
-<fullyQualifiedTypeName name="br.com.senac.view.TelaVisualizarSaldo.ButtonVisualizarSaldo"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaVisualizarSaldo.ButtonCancelarController"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.dao_interfaces.VendaDAO"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.DataBase"/>
@@ -13,7 +11,6 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="br.com.senac.controller.ControllerTelaLogonCliente"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaLogonCliente"/>
-<fullyQualifiedTypeName name="br.com.senac.view.TelaPrincipalCliente"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaLogonFuncionario"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaPrincipalFuncionario"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaLogonFuncionario.ControllerTelaLogonFuncionario"/>
@@ -26,9 +23,6 @@
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="br.com.senac.model.TabelaProduto"/>
 <fullyQualifiedTypeName name="javax.swing.border.Border"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
-<fullyQualifiedTypeName name="java.awt.FlowLayout"/>
-<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaCadastrarProduto.ButtonOkController"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TabelProdutoViewTest"/>
@@ -44,7 +38,6 @@
 <fullyQualifiedTypeName name="br.com.senac.lib.ConnectionFactory"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="br.com.senac.model.Cliente"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaVendaProduto"/>
 <fullyQualifiedTypeName name="br.com.senac.model.Venda"/>
 <fullyQualifiedTypeName name="br.com.senac.model.ItemVenda"/>
@@ -53,11 +46,18 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="br.com.senac.model.Produto"/>
-<fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.ItemVendaDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.dao.VendaDAODB"/>
 <fullyQualifiedTypeName name="br.com.senac.view.TelaCadastrarProduto"/>
-<fullyQualifiedTypeName name="br.com.senac.view.TelaCreditarSaldo"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.FlowLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaCreditarSaldo"/>
+<fullyQualifiedTypeName name="br.com.senac.dao.ClienteDAODB"/>
+<fullyQualifiedTypeName name="br.com.senac.model.Cliente"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaPrincipalCliente"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="br.com.senac.view.TelaVisualizarSaldo"/>
 </qualifiedTypeNameHistroy>
